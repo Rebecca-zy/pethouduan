@@ -1,0 +1,48 @@
+#配置项目名称
+spring:
+  #数据库连接
+  datasource:
+      username: root
+      password: 20000209
+      url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#配置端口
+server:
+  port: 8037
+#单位 分钟
+EXPIRE_TIME: 20
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #配置映射文件
+  type-aliases-package: com.example.web1.bean #配置实体类
+
+
+
+
+
+#spring:
+#  datasource:
+#    name: test  #数据库名
+#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
+#    username: root  #用户名
+#    password: 20000209  #密码
+#    platform: mysql
+#    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库链接驱动
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml  #配置映射文件
+#  type-aliases-package: com.example.web1.bean #配置实体类
+
+
