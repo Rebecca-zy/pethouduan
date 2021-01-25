@@ -15,14 +15,13 @@ public class UserInfoServiceImpl implements UserInfoService {
     UserMapper userMapper;
 
     @Override
-    public User getUserInfoById(Integer userId) {
-        return userMapper.getUserInfoById(userId);
+    public User getUserInfoById(Integer yhid) {
+        return userMapper.getUserInfoById(yhid);
     }
 
     @Override
-    public User getUserInfoByName(String userName) {
-
-        return userMapper.getUserInfoByName(userName);
+    public User getUserInfoByName(String yhm) {
+        return userMapper.getUserInfoByName(yhm);
     }
 
     @Override

@@ -20,15 +20,14 @@ public class UserInfoController {
     UserInfoService userService;
     @Autowired
     TokenService tokenService;
-
     @Value("${EXPIRE_TIME}")
     private String EXPIRE_TIME;
-
     @CheckToken
     @GetMapping("/getUserByName/{userName}")
     public String getUser(@PathVariable("userName") String userName) {
         User userInfoByName = userService.getUserInfoByName(userName);
         return userInfoByName.toString();
+
     }
 
     //注册
@@ -38,11 +37,8 @@ public class UserInfoController {
         BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
         String encodePwd = bCryptPasswordEncoder.encode(String.valueOf(map.get("password")));
         User User=new User();
-        User.setUI_USER_NAME(String.valueOf(map.get("username")));
-        User.setUI_PASSWORD(encodePwd);
-        User.setUI_STATUS("0");
-        User.setUI_CREATE_TIME(System.currentTimeMillis());
-        User.setUI_ROLES(String.valueOf(map.get("roles")));
+        User.setYhm(String.valueOf(map.get("username")));
+        User.setMm(encodePwd);
         int i = userService.addUser(User);
         if (i==1){
             return "注册成功";
@@ -62,7 +58,7 @@ public class UserInfoController {
             return result;
         }else {
             BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
-            String dbPwd=userForBase.getUI_PASSWORD();
+            String dbPwd=userForBase.getMm();
             boolean matchesResult = bCryptPasswordEncoder.matches(String.valueOf(user.get("password")),dbPwd);
             if (!matchesResult){
                 result.put("message","登录失败,密码错误");
@@ -73,7 +69,7 @@ public class UserInfoController {
                 String token = tokenService.getToken(userForBase,expiresDate);
                 result.put("token", token);
                 result.put("expireTime", EXPIRE_TIME);
-                result.put("userId", userForBase.getUI_ID());
+                result.put("userId", userForBase.getYhid());
                 return result;
             }
         }
@@ -81,7 +77,10 @@ public class UserInfoController {
     @CheckToken
     @GetMapping("/afterLogin")
     public String afterLogin(){
+
         return "你已通过验证,成功进入系统";
     }
 
+
 }
+

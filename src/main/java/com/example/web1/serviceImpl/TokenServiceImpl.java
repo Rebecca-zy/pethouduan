@@ -14,9 +14,9 @@ public class TokenServiceImpl implements TokenService {
         String token="";
 
         token= JWT.create()
-                .withAudience(String.valueOf(user.getUI_ID()))
+                .withAudience(String.valueOf(user.getYhid()))
                 .withExpiresAt(date) //过期时间配置
-                .sign(Algorithm.HMAC256(user.getUI_PASSWORD()));
+                .sign(Algorithm.HMAC256(user.getMm()));
         return token;
     }
 }
