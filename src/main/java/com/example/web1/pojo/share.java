@@ -1,6 +1,6 @@
 package com.example.web1.pojo;
 
-public class share {
+public class Share {
     private int jlid;
     private int yhid;
     private int cwid;
