@@ -4,5 +4,6 @@ import com.example.web1.pojo.User;
 public interface UserInfoService {
     User getUserInfoById( Integer yhid);
     User getUserInfoByName( String yhm);
-    int addUser( User User);
+    User getUserInfoByYx(String yx);
+    int addUser(User User);
 }

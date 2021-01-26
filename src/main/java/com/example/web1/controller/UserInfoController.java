@@ -27,7 +27,6 @@ public class UserInfoController {
     public String getUser(@PathVariable("userName") String userName) {
         User userInfoByName = userService.getUserInfoByName(userName);
         return userInfoByName.toString();
-
     }
 
     //注册
@@ -39,6 +38,7 @@ public class UserInfoController {
         User User=new User();
         User.setYhm(String.valueOf(map.get("username")));
         User.setMm(encodePwd);
+        User.setYx(String.valueOf(map.get("yx")));
         int i = userService.addUser(User);
         if (i==1){
             return "注册成功";
@@ -48,7 +48,6 @@ public class UserInfoController {
     }
 
     //登录
-
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody Map user){
         Map result=new HashMap();
@@ -65,7 +64,6 @@ public class UserInfoController {
                 return result;
             }else {
                 Date expiresDate = new Date(System.currentTimeMillis()+Integer.valueOf(EXPIRE_TIME)*60*1000);
-
                 String token = tokenService.getToken(userForBase,expiresDate);
                 result.put("token", token);
                 result.put("expireTime", EXPIRE_TIME);
@@ -77,10 +75,8 @@ public class UserInfoController {
     @CheckToken
     @GetMapping("/afterLogin")
     public String afterLogin(){
-
         return "你已通过验证,成功进入系统";
     }
-
 
 }
 

@@ -25,6 +25,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
+    public User getUserInfoByYx(String yx) {
+        return userMapper.getUserInfoByYx(yx);
+    }
+
+
+    @Override
     public int addUser(User User) {
         return userMapper.addUser(User);
     }

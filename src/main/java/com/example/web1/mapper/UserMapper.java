@@ -12,7 +12,10 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE yhm=#{yhm}")
     User getUserInfoByName(@Param("yhm") String yhm);
 
-    @Insert("INSERT INTO user ( yhm, mm )   VALUES ( #{yhm}, #{mm}) ")
+    @Select("SELECT * FROM user WHERE yx=#{yx}")
+    User getUserInfoByYx(@Param("yx") String yx);
+
+    @Insert("INSERT INTO user ( yhm, mm, yx )   VALUES ( #{yhm}, #{mm}, #{yx}) ")
     @Options(useGeneratedKeys = true, keyProperty = "yhid")
     int addUser( User User);
 }

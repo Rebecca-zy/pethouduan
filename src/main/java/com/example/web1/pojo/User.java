@@ -10,7 +10,15 @@ public class User {
     private Integer yhid;
     private String yhm;
     private String mm;
+    private String gxqm;
+    private String yx;
+    private String tx;
+    private Integer sc;
+    private Integer sf;
 
+    public String getYx() { return yx; }
+
+    public void setYx(String yx) { this.yx = yx; }
 
     public Integer getYhid() {
         return yhid;
