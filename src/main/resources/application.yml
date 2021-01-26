@@ -1,4 +1,4 @@
-#配置项目名称
+#配置项目名称test
 spring:
   #数据库连接
   datasource:
