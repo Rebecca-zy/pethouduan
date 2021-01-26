@@ -8,5 +8,5 @@ public interface KnowledgeService {
     Knowledge  getKnowledgeBm(String bm);
     Knowledge  getKnowledgeXgtz(String xgtz);
     Knowledge getKnowledgeJj(String jj);
-    Knowledge getKnowledgePzId(String pzid);
+    Knowledge getKnowledgePzId(Integer pzid);
 }

@@ -33,7 +33,7 @@ public class KnoeledgeServiceImpl implements KnowledgeService {
     }
 
     @Override
-    public Knowledge getKnowledgePzId(String pzid) { return knowledgeMapper.getKnowledgePzId(pzid); }
+    public Knowledge getKnowledgePzId(Integer pzid) { return knowledgeMapper.getKnowledgePzId(pzid); }
 
     @Override
     public Knowledge getKnowledgeZl(String zl) {

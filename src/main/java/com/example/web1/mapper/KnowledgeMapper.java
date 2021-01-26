@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface KnowledgeMapper {
     @Select("SELECT * FROM knowledge WHERE pzid=#{pzid}")
-    Knowledge getKnowledgePzId(@Param("pzid") String pzid);
+    Knowledge getKnowledgePzId(@Param("pzid") Integer pzid);
 
     @Select("SELECT * FROM knowledge WHERE pz=#{pz}")
     Knowledge getKnowledgePz(@Param("pz") String pz);
