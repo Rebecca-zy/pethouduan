@@ -67,7 +67,7 @@ public class UserInfoController {
                 String token = tokenService.getToken(userForBase,expiresDate);
                 result.put("token", token);
                 result.put("expireTime", EXPIRE_TIME);
-                result.put("userId", userForBase.getYhid());
+                result.put("yhid", userForBase.getYhid());
                 return result;
             }
         }
