@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
+
 @CrossOrigin
 @RestController
 public class ShareController {
@@ -14,16 +16,11 @@ public class ShareController {
     ShareService shareService;
     //查数据库
     @PostMapping("/share")
-    public Map<String, Object> share(@RequestBody Map shareinfo){
+    public Integer share(@RequestParam(value = "yhid") String yhid){
+        System.out.println(yhid);
         Map result=new HashMap();
-        Integer sharetemp=shareService.getShareYhId((Integer) shareinfo.get("yhid"));
-        if(sharetemp==null){
-            result.put("message","记录不存在");
-            return result;
-        }else {
-            result.put("num",sharetemp);
-            return result;
-        }
+        Integer sharetemp=Integer.parseInt(yhid);
+        return shareService.getShareYhId(sharetemp);
     }
 
 }

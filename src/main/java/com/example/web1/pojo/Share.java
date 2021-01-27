@@ -1,36 +1,36 @@
 package com.example.web1.pojo;
 
 public class Share {
-    private Integer jlid;
-    private Integer yhid;
-    private Integer cwid;
+    private int jlid;
+    private int yhid;
+    private int cwid;
     private String yhm;
-    private String fcsj;
+    private String fbsj;
     private String wz;
     private String fqh;
-    private String sc;
+    private int sc;
 
-    public Integer getJlid() {
+    public int getJlid() {
         return jlid;
     }
 
-    public void setJlid(Integer jlid) {
+    public void setJlid(int jlid) {
         this.jlid = jlid;
     }
 
-    public Integer getYhid() {
+    public int getYhid() {
         return yhid;
     }
 
-    public void setYhid(Integer yhid) {
+    public void setYhid(int yhid) {
         this.yhid = yhid;
     }
 
-    public Integer getCwid() {
+    public int getCwid() {
         return cwid;
     }
 
-    public void setCwid(Integer cwid) {
+    public void setCwid(int cwid) {
         this.cwid = cwid;
     }
 
@@ -42,12 +42,12 @@ public class Share {
         this.yhm = yhm;
     }
 
-    public String getFcsj() {
-        return fcsj;
+    public String getFbsj() {
+        return fbsj;
     }
 
-    public void setFcsj(String fcsj) {
-        this.fcsj = fcsj;
+    public void setFbsj(String fbsj) {
+        this.fbsj = fbsj;
     }
 
     public String getWz() {
@@ -66,11 +66,12 @@ public class Share {
         this.fqh = fqh;
     }
 
-    public String getSc() {
+    public int getSc() {
         return sc;
     }
 
-    public void setSc(String sc) {
+    public void setSc(int sc) {
         this.sc = sc;
     }
+    
 }
