@@ -18,7 +18,6 @@ public class ShareController {
     @PostMapping("/share")
     public Integer share(@RequestParam(value = "yhid") String yhid){
         System.out.println(yhid);
-        Map result=new HashMap();
         Integer sharetemp=Integer.parseInt(yhid);
         return shareService.getShareYhId(sharetemp);
     }

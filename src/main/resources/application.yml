@@ -22,7 +22,7 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 #配置端口
 server:
-  port: 8050
+  port: 8000
 #单位 分钟
 EXPIRE_TIME: 20
 
