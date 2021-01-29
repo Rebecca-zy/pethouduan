@@ -15,6 +15,37 @@ public class User {
     private String tx;
     private Integer sc;
     private Integer sf;
+    public String getGxqm() {
+        return gxqm;
+    }
+
+    public void setGxqm(String gxqm) {
+        this.gxqm = gxqm;
+    }
+
+    public String getTx() {
+        return tx;
+    }
+
+    public void setTx(String tx) {
+        this.tx = tx;
+    }
+
+    public Integer getSc() {
+        return sc;
+    }
+
+    public void setSc(Integer sc) {
+        this.sc = sc;
+    }
+
+    public Integer getSf() {
+        return sf;
+    }
+
+    public void setSf(Integer sf) {
+        this.sf = sf;
+    }
 
     public String getYx() { return yx; }
 

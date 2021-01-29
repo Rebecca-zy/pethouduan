@@ -11,11 +11,18 @@ public class ShareServiceImpl implements ShareService {
     @Autowired
     ShareMapper shareMapper;
     @Override
-    public Integer getShareYhId(Integer yhid){
-        return shareMapper.getShareYhId(yhid);
-    }
+    public Integer getShareYhId(Integer yhid){ return shareMapper.getShareYhId(yhid); }
     @Override
     public Share getShareByJlid(int jlid){
         return shareMapper.getShareByJlid(jlid);
     }
+    @Override
+    public Share getLatestShareByYhid(Integer yhid){
+        return shareMapper.getLatestShareByYhid(yhid);
+    }
+//    @Override
+//    public Share getUserByYhid(Integer yhid){
+//        return shareMapper.getUserByYhid(yhid);
+//    }
+
 }

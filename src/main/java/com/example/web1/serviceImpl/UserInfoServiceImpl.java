@@ -7,6 +7,8 @@ import com.example.web1.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -16,17 +18,22 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public User getUserInfoById(Integer yhid) {
-        return userMapper.getUserInfoById(yhid);
+        return  userMapper.getUserInfoById(yhid);
     }
 
     @Override
     public User getUserInfoByName(String yhm) {
-        return userMapper.getUserInfoByName(yhm);
+        return  userMapper.getUserInfoByName(yhm);
     }
 
     @Override
-    public User getUserInfoByYx(String yx) {
-        return userMapper.getUserInfoByYx(yx);
+    public List<User> getUserInfoBySimilarName(String yhm) {
+        return  userMapper.getUserInfoBySimilarName(yhm);
+    }
+
+    @Override
+    public List<User> getUserInfoByYx(String yx) {
+        return  userMapper.getUserInfoByYx(yx);
     }
 
 
@@ -34,5 +41,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public int addUser(User User) {
         return userMapper.addUser(User);
     }
+
 }
+
 

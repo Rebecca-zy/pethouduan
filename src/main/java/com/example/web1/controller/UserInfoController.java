@@ -1,7 +1,11 @@
 package com.example.web1.controller;
 import com.example.web1.CheckToken;
 import com.example.web1.PassToken;
+import com.example.web1.pojo.Knowledge;
+import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
+import com.example.web1.service.PhotoService;
+import com.example.web1.service.ShareService;
 import com.example.web1.service.TokenService;
 import com.example.web1.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,10 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+import java.util.*;
+
+
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
@@ -22,7 +30,11 @@ public class UserInfoController {
     @Autowired
     UserInfoService userService;
     @Autowired
+    ShareService shareService;
+    @Autowired
     TokenService tokenService;
+    @Autowired
+    PhotoService photoService;
     @Value("${EXPIRE_TIME}")
     private String EXPIRE_TIME;
     @CheckToken
@@ -31,6 +43,46 @@ public class UserInfoController {
         User userInfoByName = userService.getUserInfoByName(userName);
         return userInfoByName.toString();
     }
+
+    //通过用户名找对应用户id和最近动态
+    @PostMapping("/search")
+    public Map search(@RequestBody Map user) {
+        Map<String,List> result=new HashMap();
+        List<User>usertmp=new ArrayList<User>();
+        usertmp.addAll(userService.getUserInfoBySimilarName(String.valueOf(user.get("username"))));
+        result.put("user",usertmp);
+        System.out.println(usertmp);
+        List shareinfo=new ArrayList();
+        List photoinfo=new ArrayList();
+            for (int i = 0; i < usertmp.size(); i++) {
+                try {
+                    User s = (User) usertmp.get(i);
+                    System.out.println(s.getYhid());
+                    shareinfo.add((shareService.getLatestShareByYhid(s.getYhid())).getWz());
+                }
+                catch (Exception e){
+                    shareinfo.add("");
+                }
+
+                try{
+                    User s = (User) usertmp.get(i);
+                    Integer yhid=s.getYhid();
+                    photoinfo.add((photoService.getPhotoByYhid(yhid)));
+                }
+                catch (Exception e){
+                    photoinfo.add("");
+                }
+            }
+        result.put("share",shareinfo);
+        result.put("photo",photoinfo);
+        //Integer yhid=usertemp.getYhid();
+        //result.put("yhm",usertemp.getYhm());
+        //Share sharetemp= shareService.getLatestShareByYhid(yhid);
+        //result.put("share",sharetemp.getWz());
+        return result;
+    }
+
+
 
     //注册
     @PassToken
@@ -47,7 +99,6 @@ public class UserInfoController {
             return "注册成功";
         }
         return "注册失败";
-
     }
 
     //登录

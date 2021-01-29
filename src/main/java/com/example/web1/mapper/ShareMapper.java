@@ -12,4 +12,10 @@ public interface ShareMapper {
 
     @Select("SELECT * FROM share WHERE jlid=#{jlid}")
     Share getShareByJlid(@Param("jlid") int jlid);
+
+    @Select("SELECT wz FROM share WHERE jlid=(SELECT max(jlid) FROM share WHERE yhid=#{yhid})")
+    Share getLatestShareByYhid(@Param("yhid") Integer yhid);
+
+    //@Select("SELECT * FROM share WHERE jlid=(SELECT max(jlid) FROM share WHERE yhid=#{yhid})")
+    //Share getUserByYhid(@Param("yhid") Integer yhid);
 }

@@ -16,4 +16,6 @@ public class PhotoServiceImpl implements PhotoService{
     public List<Photo> getPhotoByjlid(int jlid){
         return photoMapper.getPhotoByjlid(jlid);
     }
+    @Override
+    public List<Photo> getPhotoByYhid(Integer yhid){ return photoMapper.getPhotoByYhid(yhid); }
 }
