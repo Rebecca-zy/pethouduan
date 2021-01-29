@@ -132,7 +132,7 @@ public class UserInfoController {
         return "你已通过验证,成功进入系统";
     }
 
-
+    // 注册前验证用户名唯一性
     @GetMapping("/registercheck")
     public String RegisterNameCheck(@RequestParam("yhm") String yhm) {
         try{
@@ -140,6 +140,12 @@ public class UserInfoController {
         }catch (Exception e) {
             return "testusername";
         }   
+    }
+
+    // 注册前验证邮箱唯一性
+    @GetMapping("/registeryxcheck")
+    public String RegisterYxCheck(@RequestParam("yx") String yx) {
+        return userService.getUserInfoByYx(yx).toString();  
     }
     
 
