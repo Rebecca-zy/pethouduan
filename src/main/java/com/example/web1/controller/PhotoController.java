@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PhotoController {
 
-    // http://localhost:8050/getPhotoByjlid?jlid=1   测试
+    // http://localhost:8000/getPhotoByjlid?jlid=1   测试
     @Autowired
     private PhotoService photoservice;
     @GetMapping("/getPhotoByjlid")

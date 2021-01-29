@@ -21,5 +21,11 @@ public class ShareController {
         Integer sharetemp=Integer.parseInt(yhid);
         return shareService.getShareYhId(sharetemp);
     }
+     // http://localhost:8000/getShareByjlid?jlid=1   测试
+     @GetMapping("/getShareByjlid")
+     public Share getjl(@RequestParam("jlid") String jlid){
+         int a=Integer.parseInt(jlid);
+         return shareService.getShareByJlid(1);
+     }
 
 }
