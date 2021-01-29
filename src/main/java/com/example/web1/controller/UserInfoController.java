@@ -1,13 +1,11 @@
 package com.example.web1.controller;
 import com.example.web1.CheckToken;
 import com.example.web1.PassToken;
+import com.example.web1.pojo.Follow;
 import com.example.web1.pojo.Knowledge;
 import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
-import com.example.web1.service.PhotoService;
-import com.example.web1.service.ShareService;
-import com.example.web1.service.TokenService;
-import com.example.web1.service.UserInfoService;
+import com.example.web1.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +26,8 @@ public class UserInfoController {
     TokenService tokenService;
     @Autowired
     PhotoService photoService;
+    @Autowired
+    FollowService followService;
     @Value("${EXPIRE_TIME}")
     private String EXPIRE_TIME;
     @CheckToken
@@ -37,7 +37,7 @@ public class UserInfoController {
         return userInfoByName.toString();
     }
 
-    //通过用户名找对应用户id和最近动态
+    //通过用户名找对应用户id、最近动态和照片
     @PostMapping("/search")
     public Map search(@RequestBody Map user) {
         Map<String,List> result=new HashMap();
@@ -47,6 +47,7 @@ public class UserInfoController {
         System.out.println(usertmp);
         List shareinfo=new ArrayList();
         List photoinfo=new ArrayList();
+        List followinfo=new ArrayList();
             for (int i = 0; i < usertmp.size(); i++) {
                 try {
                     User s = (User) usertmp.get(i);
@@ -65,9 +66,29 @@ public class UserInfoController {
                 catch (Exception e){
                     photoinfo.add("");
                 }
+                //knowledgeService.getKnowledgePz(String.valueOf(knowledgeinfo.get("pz")))
+                try{
+                    User s = (User) usertmp.get(i);
+                    Integer fsid=s.getYhid();
+                    Integer zyhid=Integer.parseInt(user.get("zyhid").toString());
+                    //Integer zyhid= (Integer) user.get("zyhid");
+                    System.out.println("zyhid:"+zyhid);
+                    Follow tmp=followService.JudgeFollowZyhId(zyhid,fsid);
+                    if(tmp!=null){
+                        followinfo.add(true);
+                    }
+                    else {
+                        followinfo.add(false);
+                    }
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                    followinfo.add(false);
+                }
             }
         result.put("share",shareinfo);
         result.put("photo",photoinfo);
+        result.put("follow",followinfo);
         //Integer yhid=usertemp.getYhid();
         //result.put("yhm",usertemp.getYhm());
         //Share sharetemp= shareService.getLatestShareByYhid(yhid);
