@@ -3,6 +3,8 @@ package com.example.web1.mapper;
 import com.example.web1.pojo.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 //mapper层就是dao层，对数据进行增删改查处理
 @Mapper
 public interface UserMapper {
@@ -12,8 +14,11 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE yhm=#{yhm}")
     User getUserInfoByName(@Param("yhm") String yhm);
 
+    @Select("SELECT * FROM user WHERE yhm like CONCAT('%',#{yhm},'%')")
+    List<User> getUserInfoBySimilarName(@Param("yhm") String yhm);
+
     @Select("SELECT * FROM user WHERE yx=#{yx}")
-    User getUserInfoByYx(@Param("yx") String yx);
+    List<User> getUserInfoByYx(@Param("yx") String yx);
 
     @Insert("INSERT INTO user ( yhm, mm, yx )   VALUES ( #{yhm}, #{mm}, #{yx}) ")
     @Options(useGeneratedKeys = true, keyProperty = "yhid")

@@ -1,31 +1,31 @@
 package com.example.web1.pojo;
 
 public class Follow {
-    private String zyhid;
-    private String fsid;
-    private String qxgz;
+    private Integer zyhid;
+    private Integer fsid;
+    private Integer qxgz;
 
-    public String getZyhid() {
+    public Integer getZyhid() {
         return zyhid;
     }
 
-    public void setZyhid(String zyhid) {
+    public void setZyhid(Integer zyhid) {
         this.zyhid = zyhid;
     }
 
-    public String getFsid() {
+    public Integer getFsid() {
         return fsid;
     }
 
-    public void setFsid(String fsid) {
+    public void setFsid(Integer fsid) {
         this.fsid = fsid;
     }
 
-    public String getQxgz() {
+    public Integer getQxgz() {
         return qxgz;
     }
 
-    public void setQxgz(String qxgz) {
+    public void setQxgz(Integer qxgz) {
         this.qxgz = qxgz;
     }
 }
