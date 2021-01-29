@@ -12,4 +12,7 @@ import org.apache.ibatis.annotations.Select;
 public interface PhotoMapper {
     @Select("SELECT * FROM photo WHERE jlid=#{jlid}")
     List<Photo> getPhotoByjlid(@Param("jlid") int jlid);
+
+    @Select("SELECT * FROM photo WHERE yhid=#{yhid}")
+    List<Photo> getPhotoByYhid(@Param("yhid") Integer yhid);
 }

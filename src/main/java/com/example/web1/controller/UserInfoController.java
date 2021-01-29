@@ -4,6 +4,7 @@ import com.example.web1.PassToken;
 import com.example.web1.pojo.Knowledge;
 import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
+import com.example.web1.service.PhotoService;
 import com.example.web1.service.ShareService;
 import com.example.web1.service.TokenService;
 import com.example.web1.service.UserInfoService;
@@ -25,6 +26,8 @@ public class UserInfoController {
     ShareService shareService;
     @Autowired
     TokenService tokenService;
+    @Autowired
+    PhotoService photoService;
     @Value("${EXPIRE_TIME}")
     private String EXPIRE_TIME;
     @CheckToken
@@ -42,19 +45,29 @@ public class UserInfoController {
         usertmp.addAll(userService.getUserInfoBySimilarName(String.valueOf(user.get("username"))));
         result.put("user",usertmp);
         System.out.println(usertmp);
-        List otherinfo=new ArrayList();
+        List shareinfo=new ArrayList();
+        List photoinfo=new ArrayList();
             for (int i = 0; i < usertmp.size(); i++) {
                 try {
                     User s = (User) usertmp.get(i);
                     System.out.println(s.getYhid());
-                    otherinfo.add((shareService.getLatestShareByYhid(s.getYhid())).getWz());
+                    shareinfo.add((shareService.getLatestShareByYhid(s.getYhid())).getWz());
                 }
                 catch (Exception e){
-                    otherinfo.add("");
+                    shareinfo.add("");
+                }
+
+                try{
+                    User s = (User) usertmp.get(i);
+                    Integer yhid=s.getYhid();
+                    photoinfo.add((photoService.getPhotoByYhid(yhid)));
+                }
+                catch (Exception e){
+                    photoinfo.add("");
                 }
             }
-        System.out.print(otherinfo);
-        result.put("yhm",otherinfo);
+        result.put("share",shareinfo);
+        result.put("photo",photoinfo);
         //Integer yhid=usertemp.getYhid();
         //result.put("yhm",usertemp.getYhm());
         //Share sharetemp= shareService.getLatestShareByYhid(yhid);
