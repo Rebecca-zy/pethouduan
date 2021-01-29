@@ -25,7 +25,7 @@ public class ShareController {
      @GetMapping("/getShareByjlid")
      public Share getjl(@RequestParam("jlid") String jlid){
          int a=Integer.parseInt(jlid);
-         return shareService.getShareByJlid(1);
+         return shareService.getShareByJlid(a);
      }
 
 }

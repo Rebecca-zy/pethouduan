@@ -10,8 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.*;
+
 
 @CrossOrigin
 @RestController
@@ -145,6 +152,23 @@ public class UserInfoController {
     public String afterLogin(){
         return "你已通过验证,成功进入系统";
     }
+
+    // 注册前验证用户名唯一性
+    @GetMapping("/registercheck")
+    public String RegisterNameCheck(@RequestParam("yhm") String yhm) {
+        try{
+            return userService.getUserInfoByName(yhm).toString();
+        }catch (Exception e) {
+            return "testusername";
+        }   
+    }
+
+    // 注册前验证邮箱唯一性
+    @GetMapping("/registeryxcheck")
+    public String RegisterYxCheck(@RequestParam("yx") String yx) {
+        return userService.getUserInfoByYx(yx).toString();  
+    }
+    
 
 }
 
