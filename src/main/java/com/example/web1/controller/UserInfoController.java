@@ -166,7 +166,13 @@ public class UserInfoController {
     // 注册前验证邮箱唯一性
     @GetMapping("/registeryxcheck")
     public String RegisterYxCheck(@RequestParam("yx") String yx) {
-        return userService.getUserInfoByYx(yx).toString();  
+        List<User> a=userService.getUserInfoByYx(yx);
+        if(a.isEmpty() ){
+            return "testmail";
+        }
+        else{
+            return userService.getUserInfoByYx(yx).toString();
+        }
     }
     
 
