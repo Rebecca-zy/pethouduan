@@ -2,10 +2,13 @@ package com.example.web1.controller;
 
 import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
+import com.example.web1.service.LikeService;
 import com.example.web1.service.ShareService;
 import com.example.web1.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,8 @@ public class ShareController {
     ShareService shareService;
     @Autowired
     UserInfoService userInfoService;
+    @Autowired
+    LikeService likeService;
     //查数据库
     @PostMapping("/share")
     public Integer share(@RequestParam(value = "yhid") String yhid){
