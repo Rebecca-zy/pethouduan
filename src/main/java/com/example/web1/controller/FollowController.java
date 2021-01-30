@@ -1,7 +1,6 @@
 package com.example.web1.controller;
 
 
-import com.example.web1.pojo.Follow;
 import com.example.web1.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +23,7 @@ public class FollowController {
 
     @GetMapping("/isfollow")
     public String isFollow(@RequestParam(value = "zyhid") String zyhid,@RequestParam(value = "fsid") String fsid){
+        System.out.println("cha");
         System.out.println(zyhid);
         Integer zyhtemp=Integer.parseInt(zyhid);
         System.out.println(fsid);
@@ -40,8 +40,9 @@ public class FollowController {
         }
     }
 
-    @PostMapping("/addfollow")
+    @GetMapping("/addfollow")
     public String addFollow(@RequestParam(value = "zyhid") String zyhid,@RequestParam(value = "fsid") String fsid,@RequestParam(value = "qxgz") String qxgz){
+        System.out.println("add");
         System.out.println(zyhid);
         Integer zyhtemp=Integer.parseInt(zyhid);
         System.out.println(fsid);
@@ -55,8 +56,9 @@ public class FollowController {
         return "fail";
     }
 
-    @PostMapping("/upfollow")
+    @GetMapping("/upfollow")
     public String upFollow(@RequestParam(value = "zyhid") String zyhid,@RequestParam(value = "fsid") String fsid,@RequestParam(value = "qxgz") String qxgz){
+        System.out.println("up");
         System.out.println(zyhid);
         Integer zyhtemp=Integer.parseInt(zyhid);
         System.out.println(fsid);
