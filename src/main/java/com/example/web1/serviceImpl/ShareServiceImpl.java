@@ -6,6 +6,8 @@ import com.example.web1.service.ShareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ShareServiceImpl implements ShareService {
     @Autowired
@@ -20,9 +22,7 @@ public class ShareServiceImpl implements ShareService {
     public Share getLatestShareByYhid(Integer yhid){
         return shareMapper.getLatestShareByYhid(yhid);
     }
-//    @Override
-//    public Share getUserByYhid(Integer yhid){
-//        return shareMapper.getUserByYhid(yhid);
-//    }
+    @Override
+    public List<Share> getShareInfoBySimilarName(String wz){ return shareMapper.getShareInfoBySimilarName(wz); }
 
 }

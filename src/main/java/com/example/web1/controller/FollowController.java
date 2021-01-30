@@ -3,11 +3,7 @@ package com.example.web1.controller;
 
 import com.example.web1.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -20,7 +16,6 @@ public class FollowController {
         Integer sharetemp=Integer.parseInt(zyhid);
         return followService.getFollowZyhId(sharetemp);
     }
-
     @GetMapping("/isfollow")
     public String isFollow(@RequestParam(value = "zyhid") String zyhid,@RequestParam(value = "fsid") String fsid){
         System.out.println("cha");
@@ -71,8 +66,4 @@ public class FollowController {
         }
         return "fail";
     }
-    
-        
-
-
 }
