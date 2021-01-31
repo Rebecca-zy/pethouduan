@@ -44,6 +44,13 @@ public class UserInfoController {
         return userInfoByName.toString();
     }
 
+    // http://localhost:8000/user/getUserByNamelog/用户名1
+    @GetMapping("/getUserByNamelog/{userName}")
+    public User getUserlog(@PathVariable("userName") String userName) {
+        User userInfoByName = userService.getUserInfoByName(userName);
+        return userInfoByName;
+    }
+
     //通过用户名找对应用户id、最近动态和照片
     @PostMapping("/search")
     public Map search(@RequestBody Map user) {
