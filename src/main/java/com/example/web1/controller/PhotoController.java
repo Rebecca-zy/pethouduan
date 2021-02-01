@@ -23,5 +23,17 @@ public class PhotoController {
         int a=Integer.parseInt(jlid);
         return photoservice.getPhotoByjlid(a);
     }
+
+    @GetMapping("/ishavephoto")
+    public String ishavePhoto(@RequestParam("jlid") String jlid){
+        int a=Integer.parseInt(jlid);
+        if(photoservice.getPhotoByjlid(a).toString()=="[]") {
+            return photoservice.getPhotoByjlid(a).toString();
+        }
+        else{
+            return "you";
+        }
+        
+    }
     
 }
