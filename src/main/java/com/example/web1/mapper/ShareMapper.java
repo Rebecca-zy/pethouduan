@@ -30,6 +30,6 @@ public interface ShareMapper {
     // FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid 
     // GROUP BY `share`.jlid
     // ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc
-    @Select("SELECT `share`.jlid  FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid GROUP BY `share`.jlid ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc")
+    @Select("SELECT `share`.jlid  FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid WHERE EXISTS(（SELECT DISTINCT photo.jlid FROM photo ）UNION（ SELECT DISTINCT video.jlid FROM video)） GROUP BY `share`.jlid ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc")
     int[] getShareidByStarLike();
 }
