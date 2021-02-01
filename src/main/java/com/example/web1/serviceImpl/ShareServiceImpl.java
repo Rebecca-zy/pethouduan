@@ -24,5 +24,9 @@ public class ShareServiceImpl implements ShareService {
     }
     @Override
     public List<Share> getShareInfoBySimilarName(String wz){ return shareMapper.getShareInfoBySimilarName(wz); }
+    @Override
+    public int[] getShareidByStarLike(){
+        return shareMapper.getShareidByStarLike();
+    }
 
 }

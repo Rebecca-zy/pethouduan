@@ -17,4 +17,6 @@ public interface StarMapper {
 
     @Update({ "update star set sc= #{sc} where yhid = #{yhid} and jlid=#{jlid}" })
     int updateStar(@Param("yhid") Integer yhid,@Param("jlid") Integer jlid,@Param("sc") Integer sc);
+
+    
 }

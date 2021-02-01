@@ -21,4 +21,15 @@ public interface ShareMapper {
 
     @Select("SELECT * FROM share WHERE wz like CONCAT('%',#{wz},'%')")
     List<Share> getShareInfoBySimilarName(@Param("wz") String wz);
+
+    // 按收藏降序排
+    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid)  FROM  `share` JOIN star ON `share`.jlid=star.jlid GROUP BY `share`.jlid
+    // ORDER BY COUNT(star.yhid)desc
+    // 按收藏加喜欢降序
+    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid)+COUNT(likelist.yhid)  
+    // FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid 
+    // GROUP BY `share`.jlid
+    // ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc
+    @Select("SELECT `share`.jlid  FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid GROUP BY `share`.jlid ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc")
+    int[] getShareidByStarLike();
 }

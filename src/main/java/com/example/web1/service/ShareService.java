@@ -10,4 +10,5 @@ public interface ShareService {
     Share getShareByJlid(int jlid);
     Share getLatestShareByYhid(Integer yhid);
     List<Share> getShareInfoBySimilarName(String wz);
+    int[] getShareidByStarLike();
 }

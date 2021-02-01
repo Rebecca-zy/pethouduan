@@ -38,6 +38,8 @@ public class ShareController {
          return shareService.getShareByJlid(a);
      }
 
+    
+
      @PostMapping("/sharesearch")
     public Map searchsearch(@RequestBody Map user) {
          Map<String, List> result = new HashMap();
@@ -48,4 +50,20 @@ public class ShareController {
 
          return result;
      }
+    // 首页热榜排名id
+    @GetMapping("/gethotshareid")
+    public int[] gethotshareid(){
+        return shareService.getShareidByStarLike();
+    }
+
+    //首页热榜完整内容
+    @GetMapping("/gethotshare")
+    public List<Share> gethotshare(){
+        int a[]=shareService.getShareidByStarLike();
+        List<Share> t=new ArrayList<Share>();
+        for(int i=0;i<10;i++)
+            t.add(shareService.getShareByJlid(a[i]));
+        return t;
+    }
+
 }
