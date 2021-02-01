@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface StarMapper {
-    @Select("SELECT count(*) FROM star WHERE jlid=#{jlid}")
+    @Select("SELECT count(*) FROM star WHERE jlid=#{jlid} AND sc=0")
     Integer getStarNumByJlid(@Param("jlid") Integer jlid);
 
     @Select("SELECT * FROM star WHERE yhid=#{yhid} AND jlid=#{jlid}")

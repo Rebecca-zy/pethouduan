@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface LikeMapper {
-    @Select("SELECT count(*) FROM likelist WHERE jlid=#{jlid}")
+    @Select("SELECT count(*) FROM likelist WHERE jlid=#{jlid} AND sc=0")
     Integer getLikeNumByJlid(@Param("jlid") Integer jlid);
 
     @Select("SELECT * FROM likelist WHERE yhid=#{yhid} AND jlid=#{jlid}")
