@@ -22,9 +22,11 @@ public class VideoController {
     
      // 随机获取视频分享id
     //  http://localhost:8000/getrandomvdid
-    @GetMapping("")
+    @GetMapping("/getrandomvdid")
     public int  getRandomvdid(){
-        return videoService.getRandomvdid();
+        int e=videoService.getRandomvdid();
+        System.out.println(e);
+        return e;
     }
     
     
