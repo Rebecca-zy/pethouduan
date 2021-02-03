@@ -9,5 +9,7 @@ public interface PhotoService {
 
     public List<Photo> getPhotoByjlid(int jlid);
     public List<Photo> getPhotoByYhid(Integer yhid);
+    public int[] getjlidByPhoto(Integer yhid);
+    public int[] getRandomptid();
     
 }

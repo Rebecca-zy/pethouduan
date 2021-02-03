@@ -20,4 +20,12 @@ public class VideoController {
         return videoService.getVideoByjlid(a);
     }
     
+     // 随机获取视频分享id
+    //  http://localhost:8000/getrandomvdid
+    @GetMapping("")
+    public int  getRandomvdid(){
+        return videoService.getRandomvdid();
+    }
+    
+    
 }
