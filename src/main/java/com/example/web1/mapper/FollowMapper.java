@@ -8,6 +8,9 @@ public interface FollowMapper {
     @Select("SELECT count(*) FROM follow WHERE zyhid=#{zyhid}")
     Integer getFollowZyhId(@Param("zyhid") Integer zyhid);
 
+    @Select("SELECT count(*) FROM follow WHERE fsid=#{fsid}")
+    Integer getFollowFsId(@Param("fsid") Integer fsid);
+
     @Select("SELECT * FROM follow WHERE zyhid=#{zyhid} and fsid=#{fsid}")
     Follow JudgeFollowZyhId(@Param("zyhid") Integer zyhid, @Param("fsid") Integer fsid);
 

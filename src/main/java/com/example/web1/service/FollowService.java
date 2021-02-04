@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface FollowService {
     Integer getFollowZyhId(Integer zyhid);
+    Integer getFollowFsId(Integer fsid);
     Follow JudgeFollowZyhId(Integer zyhid,Integer fsid);
     Follow getIsFollow(Integer zyhid,Integer fsid);
     Integer addFollow( Integer zyhid,Integer fsid,Integer qxgz);
