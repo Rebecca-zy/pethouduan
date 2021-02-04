@@ -4,5 +4,6 @@ import com.example.web1.pojo.Video;
 
 public interface VideoService {
     Video getVideoByjlid(int jlid);
+    int getRandomvdid();
     
 }

@@ -15,4 +15,8 @@ public class VideoServiceImpl implements VideoService {
     public Video getVideoByjlid(int jlid){
         return  videoMapper.getVideoByjlid(jlid);
     }
+    @Override
+    public int getRandomvdid(){
+        return videoMapper.getRandomvdid();
+    }
 }

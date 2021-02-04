@@ -6,10 +6,14 @@ import com.example.web1.pojo.Photo;
 import com.example.web1.service.PhotoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @CrossOrigin
 @RestController
@@ -33,7 +37,14 @@ public class PhotoController {
         else{
             return "you";
         }
-        
+       
+    }
+
+    // 获取随机照片记录值三个
+    // http://localhost:8000/getRandomptid
+    @GetMapping("/getRandomptid")
+    public int[]  getRandptid(){
+       return photoservice.getRandomptid();
     }
     
 }
