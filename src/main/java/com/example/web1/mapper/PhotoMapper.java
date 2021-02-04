@@ -21,4 +21,7 @@ public interface PhotoMapper {
 
     @Select("SELECT jlid FROM photo  WHERE sc=0 AND  jlid>= ((SELECT MAX(jlid) FROM photo )-(SELECT MIN(jlid) FROM photo )) * RAND() + (SELECT MIN(jlid) FROM photo )  LIMIT 3")
     int[] getRandomptid();
+
+    @Select("select photo.zp FROM photo JOIN `share` on photo.jlid=`share`.jlid join pet on `share`.cwid=pet.cwid WHERE pet.cwid=#{cwid}")
+    String[] getPetPicList(@Param("cwid") Integer cwid);
 }

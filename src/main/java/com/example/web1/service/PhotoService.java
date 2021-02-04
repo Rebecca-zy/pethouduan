@@ -11,5 +11,6 @@ public interface PhotoService {
     public List<Photo> getPhotoByYhid(Integer yhid);
     public int[] getjlidByPhoto(Integer yhid);
     public int[] getRandomptid();
+    public String[] getPetPicList(Integer cwid);
     
 }

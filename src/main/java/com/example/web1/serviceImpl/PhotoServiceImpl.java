@@ -28,4 +28,9 @@ public class PhotoServiceImpl implements PhotoService{
     public int[] getRandomptid(){
         return photoMapper.getRandomptid();
     }
+
+    @Override
+    public String[] getPetPicList(Integer cwid){
+        return photoMapper.getPetPicList(cwid);
+    }
 }

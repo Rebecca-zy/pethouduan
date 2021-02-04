@@ -46,5 +46,11 @@ public class PhotoController {
     public int[]  getRandptid(){
        return photoservice.getRandomptid();
     }
+
+    // 获取宠物照片
+    @PostMapping("/getpetpic")
+    public String[] getPetPicList(@RequestParam("cwid") int cwid){
+        return photoservice.getPetPicList(cwid);
+    }
     
 }
