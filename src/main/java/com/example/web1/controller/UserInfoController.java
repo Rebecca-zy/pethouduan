@@ -131,7 +131,8 @@ public class UserInfoController {
 
     //登录
     @PostMapping("/login")
-    public Map<String, Object> login(@RequestBody Map user){
+    public Map<String, Object> login(@RequestBody Map<String,Object> user){
+        System.out.println(user);
         Map result=new HashMap();
         User userForBase=userService.getUserInfoByName(String.valueOf(user.get("username")));
         if(userForBase==null){
