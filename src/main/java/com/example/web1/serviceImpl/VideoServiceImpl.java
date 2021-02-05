@@ -29,6 +29,7 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.getVideoFbsj(yhid);
     }
 
+   
     @Override
     public List<userPhotolist> getUserVideolistByYhid(Integer yhid){
         List<userPhotolist> temp=new ArrayList<userPhotolist>();

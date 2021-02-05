@@ -2,6 +2,7 @@ package com.example.web1.controller;
 
 import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
+import com.example.web1.pojo.messageinfo;
 import com.example.web1.service.LikeService;
 import com.example.web1.service.ShareService;
 import com.example.web1.service.UserInfoService;
@@ -64,6 +65,11 @@ public class ShareController {
         for(int i=0;i<10;i++)
             t.add(shareService.getShareByJlid(a[i]));
         return t;
+    }
+
+    @PostMapping("/usersharebyyhid")
+    public List<messageinfo> userShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "zyhid") int zyhid){
+        return shareService.userShareByYhid(yhid, zyhid);
     }
 
 }
