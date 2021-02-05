@@ -3,6 +3,7 @@ package com.example.web1.controller;
 import java.util.List;
 
 import com.example.web1.pojo.Pet;
+import com.example.web1.pojo.petinfo;
 import com.example.web1.service.PetService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,13 @@ public class PetController {
     public List<Pet> PetListByyhid(@RequestParam("yhid") Integer yhid){
         return petService.getPetByYlid(yhid);
     }
+    // 通过用户id获得宠物列表信息和照片
+    @PostMapping("/petinfolistbyyhid")
+    public List<petinfo> petInfoListByYhid(@RequestParam("yhid") Integer yhid){
+        return petService.getPetInfoByYhid(yhid);
+    }
+    
+
 
 
 }

@@ -1,7 +1,8 @@
 package com.example.web1.serviceImpl;
 
 import com.example.web1.pojo.User;
-
+import com.example.web1.mapper.FollowMapper;
+import com.example.web1.mapper.ShareMapper;
 import com.example.web1.mapper.UserMapper;
 import com.example.web1.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    FollowMapper followMapper;
+    @Autowired
+    ShareMapper shareMapper;
 
     @Override
     public User getUserInfoById(Integer yhid) {
@@ -40,6 +45,15 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int addUser(User User) {
         return userMapper.addUser(User);
+    }
+
+    @Override
+    public int[] gz_fs_fx( Integer yhid ){
+        int[] a=new int[3];
+        a[0]=followMapper.getFollowFsId(yhid);
+        a[1]=followMapper.getFollowZyhId(yhid);
+        a[2]=shareMapper.getShareYhId(yhid);
+        return a;
     }
 
 }

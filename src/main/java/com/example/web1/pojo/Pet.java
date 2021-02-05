@@ -12,6 +12,7 @@ public class Pet {
     private String xb;
     private String xm;
     private Integer sc;
+    private String cwtx;
 
     public int getCwid() {
         return cwid;
@@ -75,5 +76,13 @@ public class Pet {
 
     public void setSc(Integer sc) {
         this.sc = sc;
+    }
+
+    public String getCwtx() {
+        return cwtx;
+    }
+
+    public void setCwtx(String cwtx) {
+        this.cwtx = cwtx;
     }
 }
