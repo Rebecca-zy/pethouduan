@@ -1,4 +1,4 @@
-package com.example.web1.PhotoInfo;
+package com.example.web1.HealthCardInfo;
 
 import lombok.Data;
 

@@ -1,8 +1,7 @@
-package com.example.web1.PhotoInfo;
+package com.example.web1.HealthCardInfo;
 
 
 import net.coobird.thumbnailator.Thumbnails;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;

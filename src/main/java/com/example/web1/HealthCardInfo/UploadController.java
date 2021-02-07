@@ -1,18 +1,14 @@
-package com.example.web1.PhotoInfo;
+package com.example.web1.HealthCardInfo;
 
 
-import com.example.web1.PdfInfo.Img2PdfUtil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 
-import static com.example.web1.PdfInfo.Img2PdfUtil.MultipartFileToFile;
-import static com.example.web1.PdfInfo.Img2PdfUtil.imagesToPdf;
-import static com.example.web1.PhotoInfo.FileUtils.getAccuracy;
+import static com.example.web1.HealthCardInfo.Img2PdfUtil.MultipartFileToFile;
 
 
 @CrossOrigin(origins = "*")

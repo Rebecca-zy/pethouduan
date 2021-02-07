@@ -1,4 +1,4 @@
-package com.example.web1.PdfInfo;
+package com.example.web1.HealthCardInfo;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
@@ -7,7 +7,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
