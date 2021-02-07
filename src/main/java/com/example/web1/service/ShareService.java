@@ -1,6 +1,8 @@
 package com.example.web1.service;
 
 import com.example.web1.pojo.Share;
+import com.example.web1.pojo.messageinfo;
+
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,4 +13,7 @@ public interface ShareService {
     Share getLatestShareByYhid(Integer yhid);
     List<Share> getShareInfoBySimilarName(String wz);
     int[] getShareidByStarLike();
+    int[] getShareidByyhid(int yhid);
+    List<messageinfo> userShareByYhid(int yhid,int zyhid);
+    
 }

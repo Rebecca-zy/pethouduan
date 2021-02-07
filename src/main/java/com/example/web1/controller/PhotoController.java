@@ -3,6 +3,7 @@ package com.example.web1.controller;
 import java.util.List;
 
 import com.example.web1.pojo.Photo;
+import com.example.web1.pojo.userPhotolist;
 import com.example.web1.service.PhotoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,18 @@ public class PhotoController {
     @GetMapping("/getRandomptid")
     public int[]  getRandptid(){
        return photoservice.getRandomptid();
+    }
+
+    // 获取宠物照片
+    @PostMapping("/getpetpic")
+    public String[] getPetPicList(@RequestParam("cwid") int cwid){
+        return photoservice.getPetPicList(cwid);
+    }
+
+    // 获取他人主页按时间的照片
+    @PostMapping("/getuserfbsjpic")
+    public List<userPhotolist> getUserFbsjPic(@RequestParam("yhid") int yhid){
+        return photoservice.getUserPhotolistByYhid(yhid);
     }
     
 }

@@ -15,6 +15,10 @@ public class FollowServiceImpl implements FollowService {
         return followMapper.getFollowZyhId(zyhid);
     }
     @Override
+    public Integer getFollowFsId(Integer fsid){
+        return followMapper.getFollowFsId(fsid);
+    }
+    @Override
     public Follow JudgeFollowZyhId(Integer zyhid, Integer fsid){return followMapper.JudgeFollowZyhId(zyhid,fsid);}
     @Override
     public Follow getIsFollow(Integer zyhid,Integer fsid){

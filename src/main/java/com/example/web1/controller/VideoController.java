@@ -1,11 +1,15 @@
 package com.example.web1.controller;
 
+import java.util.List;
+
 import com.example.web1.pojo.Video;
+import com.example.web1.pojo.userPhotolist;
 import com.example.web1.service.VideoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +31,12 @@ public class VideoController {
         int e=videoService.getRandomvdid();
         System.out.println(e);
         return e;
+    }
+
+    // 获取他人主页按时间的视频
+    @PostMapping("/getuserfbsjvid")
+    public List<userPhotolist> getUserFbsjVid(@RequestParam("yhid") int yhid){
+        return videoService.getUserVideolistByYhid(yhid);
     }
     
     

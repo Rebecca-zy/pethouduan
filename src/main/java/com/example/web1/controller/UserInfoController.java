@@ -183,6 +183,11 @@ public class UserInfoController {
         }
     }
     
+    // 通过用户id获取关注 粉丝分享数字
+    @PostMapping("/gzfsfx")
+    public int[] gzFsFx(@RequestParam("yhid") Integer yhid){
+        return userService.gz_fs_fx(yhid);
+    }
 
 }
 

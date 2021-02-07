@@ -9,4 +9,5 @@ public interface UserInfoService {
     List<User> getUserInfoBySimilarName(String yhm);
     List<User> getUserInfoByYx(String yx);
     int addUser(User User);
+    int[] gz_fs_fx( Integer yhid );
 }

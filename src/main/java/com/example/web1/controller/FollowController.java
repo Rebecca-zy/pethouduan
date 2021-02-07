@@ -16,6 +16,12 @@ public class FollowController {
         Integer sharetemp=Integer.parseInt(zyhid);
         return followService.getFollowZyhId(sharetemp);
     }
+    @PostMapping("/fsfollow")
+    public Integer fsfollow(@RequestParam(value = "fsid") String fsid) {
+        System.out.println(fsid);
+        Integer sharetemp=Integer.parseInt(fsid);
+        return followService.getFollowFsId(sharetemp);
+    }
     @GetMapping("/isfollow")
     public String isFollow(@RequestParam(value = "zyhid") String zyhid,@RequestParam(value = "fsid") String fsid){
         System.out.println("cha");
