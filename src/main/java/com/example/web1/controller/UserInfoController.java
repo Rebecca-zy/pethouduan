@@ -151,6 +151,7 @@ public class UserInfoController {
                 result.put("token", token);
                 result.put("expireTime", EXPIRE_TIME);
                 result.put("yhid", userForBase.getYhid());
+                result.put("yhm", userForBase.getYhm());
                 return result;
             }
         }
