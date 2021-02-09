@@ -6,6 +6,7 @@ import com.example.web1.pojo.Star;
 
 public interface StarService {
     Integer getStarNumByJlid(Integer jlid);
+    Integer[] getStarJlid(Integer yhid);
     Star getIsStar(Integer yhid, Integer jlid);
     Integer addStar( Integer yhid,Integer jlid);
     Integer updateStar(Integer yhid,Integer jlid,Integer sc);

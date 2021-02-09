@@ -29,7 +29,7 @@ public class VideoController {
     @GetMapping("/getrandomvdid")
     public int  getRandomvdid(){
         int e=videoService.getRandomvdid();
-        System.out.println(e);
+        // System.out.println(e);
         return e;
     }
 

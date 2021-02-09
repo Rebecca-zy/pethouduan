@@ -16,5 +16,6 @@ public interface ShareService {
     int[] getShareidByyhid(int yhid);
     List<messageinfo> userShareByYhid(int yhid,int zyhid,int cwid);
     int[] getShareidBycwyhid(int yhid,int cwid);
+    List<messageinfo> userfollstarShareByyhid(int yhid,int fqh,int follorstar);
     
 }

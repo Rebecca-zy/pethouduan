@@ -33,11 +33,15 @@ public interface ShareMapper {
     @Select("SELECT `share`.jlid  FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid WHERE EXISTS((SELECT DISTINCT photo.jlid FROM photo) UNION (SELECT DISTINCT video.jlid FROM video)) GROUP BY `share`.jlid ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc")
     int[] getShareidByStarLike();
 
-    @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} ")
+    // 返回用户的历史分享的记录
+    @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} ORDER BY `share`.fbsj DESC")
     int[] getShareidByyhid(@Param("yhid") int yhid);
 
-    @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} AND `share`.cwid=#{cwid}")
+    // 返回用户的历史分享的记录分宠物
+    @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} AND `share`.cwid=#{cwid} ORDER BY `share`.fbsj DESC")
     int[] getShareidBycwidyhid(@Param("yhid") int yhid,@Param("cwid") int cwid);
 
-
+     // 返回关注用户的动态
+    @Select("select `share`.jlid FROM `share` where `share`.yhid in (SELECT follow.zyhid  FROM follow where follow.fsid=#{yhid}) AND `share`.sc=0 ORDER BY `share`.fbsj DESC")
+     Integer[] getfollowShareByyhid(@Param("yhid") int yhid);
 }

@@ -17,6 +17,11 @@ public class StarServiceImpl implements StarService {
     }
 
     @Override
+    public Integer[] getStarJlid(Integer yhid){
+        return starMapper.getStarJlid(yhid);
+    }
+
+    @Override
     public Star getIsStar(Integer yhid, Integer jlid){
         return starMapper.getIsStar(yhid, jlid);
     }

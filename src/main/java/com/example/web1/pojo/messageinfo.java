@@ -1,6 +1,9 @@
 package com.example.web1.pojo;
 
 public class messageinfo {
+    private int userid;
+    private String username;
+    private String userurl;
     private int messagenum;
     private String datatime;    
     private String passage;
@@ -90,5 +93,29 @@ public class messageinfo {
 
     public void setVdurl(String vdurl) {
         this.vdurl = vdurl;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserurl() {
+        return userurl;
+    }
+
+    public void setUserurl(String userurl) {
+        this.userurl = userurl;
     }
 }

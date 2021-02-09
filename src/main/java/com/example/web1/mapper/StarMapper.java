@@ -9,6 +9,13 @@ public interface StarMapper {
     @Select("SELECT count(*) FROM star WHERE jlid=#{jlid} AND sc=0")
     Integer getStarNumByJlid(@Param("jlid") Integer jlid);
 
+    @Select("SELECT `star`.jlid FROM star JOIN `share` ON `star`.jlid=`share`.jlid WHERE star.yhid=#{yhid}  AND star.sc=0 ORDER BY `share`.fbsj DESC" )
+    Integer[] getStarJlid(@Param("yhid") Integer yhid);
+
+    @Select("SELECT `star`.jlid FROM star JOIN `share` ON `star`.jlid=`share`.jlid WHERE star.yhid=#{yhid} AND `share`.fqh=#{fqh} AND star.sc=0 ORDER BY `share`.fbsj DESC" )
+    Integer[] getStarfqhJlid(@Param("yhid") Integer yhid,@Param("fqh") Integer fqh);
+
+
     @Select("SELECT * FROM star WHERE yhid=#{yhid} AND jlid=#{jlid}")
     Star getIsStar(@Param("yhid") Integer yhid, @Param("jlid") Integer jlid);
 

@@ -28,7 +28,7 @@ public class ShareController {
     //查数据库
     @PostMapping("/share")
     public Integer share(@RequestParam(value = "yhid") String yhid){
-        System.out.println(yhid);
+        // System.out.println(yhid);
         Integer sharetemp=Integer.parseInt(yhid);
         return shareService.getShareYhId(sharetemp);
     }
@@ -70,6 +70,12 @@ public class ShareController {
     @PostMapping("/usersharebyyhid")
     public List<messageinfo> userShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "zyhid") int zyhid,@RequestParam(value = "cwid") int cwid){
         return shareService.userShareByYhid(yhid, zyhid,cwid);
+    }
+   
+// 用户主页收藏页面/动态的分享记录
+    @PostMapping("/userstarsharebyyhid")
+    public List<messageinfo> userfollstarShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "fqh") int fqh,@RequestParam(value = "follorstar") int follorstar){
+        return shareService. userfollstarShareByyhid(yhid, fqh, follorstar);
     }
 
     

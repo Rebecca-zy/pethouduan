@@ -58,14 +58,14 @@ public class UserInfoController {
         List<User>usertmp=new ArrayList<User>();
         usertmp.addAll(userService.getUserInfoBySimilarName(String.valueOf(user.get("username"))));
         result.put("user",usertmp);
-        System.out.println(usertmp);
+        // System.out.println(usertmp);
         List shareinfo=new ArrayList();
         List photoinfo=new ArrayList();
         List followinfo=new ArrayList();
             for (int i = 0; i < usertmp.size(); i++) {
                 try {
                     User s = (User) usertmp.get(i);
-                    System.out.println(s.getYhid());
+                    // System.out.println(s.getYhid());
                     shareinfo.add((shareService.getLatestShareByYhid(s.getYhid())).getWz());
                 }
                 catch (Exception e){
@@ -86,7 +86,7 @@ public class UserInfoController {
                     Integer fsid=s.getYhid();
                     Integer zyhid=Integer.parseInt(user.get("zyhid").toString());
                     //Integer zyhid= (Integer) user.get("zyhid");
-                    System.out.println("zyhid:"+zyhid);
+                    // System.out.println("zyhid:"+zyhid);
                     Follow tmp=followService.JudgeFollowZyhId(zyhid,fsid);
                     if(tmp!=null){
                         followinfo.add(true);
@@ -96,7 +96,7 @@ public class UserInfoController {
                     }
                 }
                 catch (Exception e){
-                    System.out.println(e);
+                    // System.out.println(e);
                     followinfo.add(false);
                 }
             }
@@ -132,7 +132,7 @@ public class UserInfoController {
     //登录
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody Map<String,Object> user){
-        System.out.println(user);
+        // System.out.println(user);
         Map result=new HashMap();
         User userForBase=userService.getUserInfoByName(String.valueOf(user.get("username")));
         if(userForBase==null){
