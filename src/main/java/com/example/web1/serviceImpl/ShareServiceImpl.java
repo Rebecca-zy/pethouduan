@@ -63,10 +63,20 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
-    public List<messageinfo> userShareByYhid(int yhid, int zyhid) {
+    public int[] getShareidBycwyhid(int yhid,int cwid){
+        return shareMapper.getShareidBycwidyhid(yhid, cwid);
+    }
+
+    @Override
+    public List<messageinfo> userShareByYhid(int yhid, int zyhid,int cwid) {
+        
         int a[] = new int [getShareidByyhid(yhid).length];
-        a=getShareidByyhid(yhid);
-       
+        if(cwid==0){
+            a=getShareidByyhid(yhid);
+        }
+        else{
+            a= getShareidBycwyhid(yhid, cwid);
+        }
         
         List<messageinfo> temp = new ArrayList<messageinfo>();
         for (int i = 0; i < a.length; i++) {

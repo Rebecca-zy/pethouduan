@@ -68,8 +68,10 @@ public class ShareController {
     }
 
     @PostMapping("/usersharebyyhid")
-    public List<messageinfo> userShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "zyhid") int zyhid){
-        return shareService.userShareByYhid(yhid, zyhid);
+    public List<messageinfo> userShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "zyhid") int zyhid,@RequestParam(value = "cwid") int cwid){
+        return shareService.userShareByYhid(yhid, zyhid,cwid);
     }
+
+    
 
 }

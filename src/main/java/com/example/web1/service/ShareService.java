@@ -14,6 +14,7 @@ public interface ShareService {
     List<Share> getShareInfoBySimilarName(String wz);
     int[] getShareidByStarLike();
     int[] getShareidByyhid(int yhid);
-    List<messageinfo> userShareByYhid(int yhid,int zyhid);
+    List<messageinfo> userShareByYhid(int yhid,int zyhid,int cwid);
+    int[] getShareidBycwyhid(int yhid,int cwid);
     
 }

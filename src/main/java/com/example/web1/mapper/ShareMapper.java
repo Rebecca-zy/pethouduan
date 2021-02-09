@@ -36,5 +36,8 @@ public interface ShareMapper {
     @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} ")
     int[] getShareidByyhid(@Param("yhid") int yhid);
 
+    @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} AND `share`.cwid=#{cwid}")
+    int[] getShareidBycwidyhid(@Param("yhid") int yhid,@Param("cwid") int cwid);
+
 
 }
