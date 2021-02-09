@@ -10,5 +10,6 @@ public interface VideoService {
     Video getVideoByjlid(int jlid);
     int getRandomvdid();
     String[] getVideoFbsj(Integer yhid);
-    List<userPhotolist> getUserVideolistByYhid(Integer yhid);
+    String[] getVideocwidFbsj(Integer yhid,Integer cwid);
+    List<userPhotolist> getUserVideolistByYhid(Integer yhid,Integer cwid);
 }

@@ -35,8 +35,8 @@ public class VideoController {
 
     // 获取他人主页按时间的视频
     @PostMapping("/getuserfbsjvid")
-    public List<userPhotolist> getUserFbsjVid(@RequestParam("yhid") int yhid){
-        return videoService.getUserVideolistByYhid(yhid);
+    public List<userPhotolist> getUserFbsjVid(@RequestParam("yhid") int yhid,@RequestParam("cwid") int cwid){
+        return videoService.getUserVideolistByYhid(yhid,cwid);
     }
     
     

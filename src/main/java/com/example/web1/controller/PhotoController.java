@@ -56,8 +56,8 @@ public class PhotoController {
 
     // 获取他人主页按时间的照片
     @PostMapping("/getuserfbsjpic")
-    public List<userPhotolist> getUserFbsjPic(@RequestParam("yhid") int yhid){
-        return photoservice.getUserPhotolistByYhid(yhid);
+    public List<userPhotolist> getUserFbsjPic(@RequestParam("yhid") int yhid,@RequestParam("cwid") int cwid){
+        return photoservice.getUserPhotolistByYhid(yhid,cwid);
     }
     
 }

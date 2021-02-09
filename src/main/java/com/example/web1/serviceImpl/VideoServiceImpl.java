@@ -29,11 +29,22 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.getVideoFbsj(yhid);
     }
 
+    @Override 
+    public String[] getVideocwidFbsj(Integer yhid,Integer cwid){
+        return videoMapper.getVideocwidFbsj(yhid,cwid);
+    }
+
    
     @Override
-    public List<userPhotolist> getUserVideolistByYhid(Integer yhid){
+    public List<userPhotolist> getUserVideolistByYhid(Integer yhid,Integer cwid){
         List<userPhotolist> temp=new ArrayList<userPhotolist>();
-        String s[]=getVideoFbsj(yhid);
+        String s[]=new String[getVideoFbsj(yhid).length];
+        if(cwid==0){
+            s=getVideoFbsj(yhid);
+        }
+        else{
+            s=getVideocwidFbsj(yhid,cwid);
+        }
         for(int i=0;i<s.length;i++){
             userPhotolist t=new userPhotolist();
             t.setFbsj(s[i]);

@@ -16,6 +16,9 @@ public interface VideoMapper {
 
     @Select("select DISTINCT `share`.fbsj FROM video JOIN `share` on video.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} ORDER BY `share`.fbsj DESC")
     String[] getVideoFbsj(@Param("yhid") Integer yhid);
+
+    @Select("select DISTINCT `share`.fbsj FROM video JOIN `share` on video.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} AND `share`.cwid=#{cwid} ORDER BY `share`.fbsj DESC")
+    String[] getVideocwidFbsj(@Param("yhid") Integer yhid,@Param("cwid") Integer cwid);
     
     @Select("select video.sp FROM video JOIN `share` on video.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} AND `share`.fbsj=#{fbsj}")
     String[] getUserVideolistByYhid(@Param("yhid") Integer yhid,@Param("fbsj") String fbsj);

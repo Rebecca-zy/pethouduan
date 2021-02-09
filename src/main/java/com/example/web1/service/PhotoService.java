@@ -15,6 +15,7 @@ public interface PhotoService {
     public int[] getRandomptid();
     public String[] getPetPicList(Integer cwid);
     public String[] getPhotoFbsj(Integer yhid);
-    public List<userPhotolist> getUserPhotolistByYhid(Integer yhid);
+    public List<userPhotolist> getUserPhotolistByYhid(Integer yhid,Integer cwid);
+    public String[] getPhotocwidFbsj(Integer yhid,Integer cwid);
     
 }

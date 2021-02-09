@@ -29,6 +29,9 @@ public interface PhotoMapper {
     @Select("select DISTINCT `share`.fbsj FROM photo JOIN `share` on photo.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} ORDER BY `share`.fbsj DESC")
     String[] getPhotoFbsj(@Param("yhid") Integer yhid);
 
+    @Select("select DISTINCT `share`.fbsj FROM photo JOIN `share` on photo.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} AND `share`.cwid=#{cwid} ORDER BY `share`.fbsj DESC")
+    String[] getPhotocwidFbsj(@Param("yhid") Integer yhid,@Param("cwid") Integer cwid);
+
     @Select("select photo.zp FROM photo JOIN `share` on photo.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} AND `share`.fbsj=#{fbsj}")
     String[] getUserPhotolistByYhid(@Param("yhid") Integer yhid,@Param("fbsj") String fbsj);
 }

@@ -41,10 +41,21 @@ public class PhotoServiceImpl implements PhotoService{
         return photoMapper.getPhotoFbsj(yhid);
     }
 
+    @Override 
+    public String[] getPhotocwidFbsj(Integer yhid,Integer cwid){
+        return photoMapper.getPhotocwidFbsj(yhid,cwid);
+    }
+
     @Override
-    public List<userPhotolist> getUserPhotolistByYhid(Integer yhid){
+    public List<userPhotolist> getUserPhotolistByYhid(Integer yhid,Integer cwid){
         List<userPhotolist> temp=new ArrayList<userPhotolist>();
-        String s[]=getPhotoFbsj(yhid);
+        String s[]=new String[getPhotoFbsj(yhid).length];
+        if(cwid==0){
+            s=getPhotoFbsj(yhid);
+        }
+        else{
+            s=getPhotocwidFbsj(yhid,cwid);
+        }
         for(int i=0;i<s.length;i++){
             userPhotolist t=new userPhotolist();
             t.setFbsj(s[i]);
