@@ -26,8 +26,4 @@ public class PetController {
     public List<petinfo> petInfoListByYhid(@RequestParam("yhid") Integer yhid){
         return petService.getPetInfoByYhid(yhid);
     }
-    
-
-
-
 }

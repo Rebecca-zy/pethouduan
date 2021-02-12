@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.io.File;
 
-import static com.example.web1.HealthCardInfo.Img2PdfUtil.MultipartFileToFile;
+import static com.example.web1.HealthCardInfo.PdfUtil.MultipartFileToFile;
 
 
 @CrossOrigin(origins = "*")
@@ -40,7 +40,7 @@ public class UploadController {
         }
 //        生成pdf文件的路径
         String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
-        Img2PdfUtil.imagesToPdf(outPdfPath, imageFiles);
+        PdfUtil.imagesToPdf(outPdfPath, imageFiles);
 
         return url;
 
