@@ -58,6 +58,16 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
+    public List<Share> getShareInfoBySection(String wz,String fqh) {
+        return shareMapper.getShareInfoBySection(wz,fqh);
+    }
+
+    @Override
+    public List<Share> getShareInfoByKind(String wz,String zl) {
+        return shareMapper.getShareInfoByKind(wz,zl);
+    }
+
+    @Override
     public int[] getShareidByStarLike() {
         return shareMapper.getShareidByStarLike();
     }

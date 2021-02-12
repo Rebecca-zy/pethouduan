@@ -57,6 +57,25 @@ public class ShareController {
          //result.put("userinfo",userinfo);
          return result;
      }
+
+     //指定分区搜索记录
+     @PostMapping("/targetsearch")
+     public Map targetSearch(@RequestBody Map user) {
+         Map<String, List> result = new HashMap();
+         List<Share> shareinfo=shareService.getShareInfoBySection(String.valueOf(user.get("wz")),String.valueOf(user.get("fqh")));
+         result.put("shareinfo",shareinfo);
+         return result;
+     }
+
+    //指定分区搜索记录
+    @PostMapping("/animalsearch")
+    public Map animalSearch(@RequestBody Map user) {
+        Map<String, List> result = new HashMap();
+        List<Share> shareinfo=shareService.getShareInfoByKind(String.valueOf(user.get("wz")),String.valueOf(user.get("zl")));
+        result.put("shareinfo",shareinfo);
+        return result;
+    }
+
     // 首页热榜排名id
     @GetMapping("/gethotshareid")
     public int[] gethotshareid(){

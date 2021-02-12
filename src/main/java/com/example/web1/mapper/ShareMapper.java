@@ -44,4 +44,12 @@ public interface ShareMapper {
      // 返回关注用户的动态
     @Select("select `share`.jlid FROM `share` where `share`.yhid in (SELECT follow.zyhid  FROM follow where follow.fsid=#{yhid}) AND `share`.sc=0 ORDER BY `share`.fbsj DESC")
      Integer[] getfollowShareByyhid(@Param("yhid") int yhid);
+
+    //返回对应分区的关键字相关的记录信息
+    @Select("SELECT * FROM share WHERE wz like CONCAT('%',#{wz},'%') AND fqh=#{fqh}")
+    List<Share> getShareInfoBySection(@Param("wz") String wz,@Param("fqh") String fqh);
+
+    //返回对应分区的种类相关的记录信息
+    @Select("SELECT * FROM share Join pet On share.yhid=pet.yhid Where wz like CONCAT('%',#{wz},'%') AND zl=#{zl}")
+    List<Share> getShareInfoByKind(@Param("wz") String wz,@Param("zl") String zl);
 }
