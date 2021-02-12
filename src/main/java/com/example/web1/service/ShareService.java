@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ShareService {
+    Integer addShare(Integer yhid,Integer cwid,String yhm,String fbsj,String wz,Integer fqh);
     Integer getShareYhId(Integer yhid);
     Share getShareByJlid(int jlid);
     Share getLatestShareByYhid(Integer yhid);
@@ -19,5 +20,6 @@ public interface ShareService {
     List<messageinfo> userShareByYhid(int yhid,int zyhid,int cwid);
     int[] getShareidBycwyhid(int yhid,int cwid);
     List<messageinfo> userfollstarShareByyhid(int yhid,int fqh,int follorstar);
+
     
 }

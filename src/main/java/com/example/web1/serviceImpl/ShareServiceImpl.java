@@ -38,6 +38,11 @@ public class ShareServiceImpl implements ShareService {
     UserMapper userMapper; 
 
     @Override
+    public Integer addShare(Integer yhid,Integer cwid,String yhm,String fbsj,String wz,Integer fqh){
+        return shareMapper.addShare(yhid,cwid, yhm, fbsj, wz, fqh);
+    }
+
+    @Override
     public Integer getShareYhId(Integer yhid) {
         return shareMapper.getShareYhId(yhid);
     }
