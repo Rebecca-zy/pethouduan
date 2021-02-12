@@ -2,6 +2,8 @@ package com.example.web1.mapper;
 
 import com.example.web1.pojo.Share;
 import com.example.web1.pojo.User;
+
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -10,6 +12,9 @@ import java.util.List;
 
 @Mapper
 public interface ShareMapper {
+    @Insert("INSERT INTO share (yhid, cwid,yhm,fbsj,wz,fqh) VALUES ( #{yhid}, #{cwid}, #{yhm}, #{fbsj}, #{wz}, #{fqh}) ")
+    Integer addShare(@Param("yhid") Integer yhid,@Param("cwid") Integer cwid,@Param("yhm") String yhm,@Param("fbsj") String fbsj,@Param("wz") String wz,@Param("fqh") Integer fqh);
+
     @Select("SELECT count(*) FROM share WHERE yhid=#{yhid}")
     Integer getShareYhId(@Param("yhid") Integer yhid);
 

@@ -25,6 +25,11 @@ public class ShareController {
     UserInfoService userInfoService;
     @Autowired
     LikeService likeService;
+
+    @PostMapping("/addshare")
+    public Integer addshare(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "cwid") int cwid,@RequestParam(value = "yhm") String yhm,@RequestParam(value = "wz") String wz,@RequestParam(value = "fbsj") String fbsj,@RequestParam(value = "fqh") int fqh){    
+        return shareService.addShare(yhid,cwid, yhm, fbsj, wz, fqh);
+    }
     //查数据库
     @PostMapping("/share")
     public Integer share(@RequestParam(value = "yhid") String yhid){
