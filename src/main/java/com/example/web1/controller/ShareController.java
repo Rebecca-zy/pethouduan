@@ -39,16 +39,22 @@ public class ShareController {
          return shareService.getShareByJlid(a);
      }
 
-    
+    @PostMapping("/getSection")
+    public Map getSection(@RequestBody Map info){
+        System.out.println(info);
+        Map result=new HashMap();
+        int a=parseInt(String.valueOf(info.get("jlid")));
+        result.put("Section",shareService.getShareByJlid(a).getFqh());
+        return result;
+    }
 
-     @PostMapping("/sharesearch")
+    @PostMapping("/sharesearch")
     public Map searchsearch(@RequestBody Map user) {
          Map<String, List> result = new HashMap();
          List<Share> shareinfo=shareService.getShareInfoBySimilarName(String.valueOf(user.get("wz")));
          //List<User> userinfo=userInfoService.getUserInfoBySimilarName(String.valueOf(user.get("wz")));
          result.put("shareinfo",shareinfo);
          //result.put("userinfo",userinfo);
-
          return result;
      }
     // 首页热榜排名id
@@ -62,8 +68,9 @@ public class ShareController {
     public List<Share> gethotshare(){
         int a[]=shareService.getShareidByStarLike();
         List<Share> t=new ArrayList<Share>();
-        for(int i=0;i<10;i++)
+        for(int i=0;i<10;i++) {
             t.add(shareService.getShareByJlid(a[i]));
+        }
         return t;
     }
 

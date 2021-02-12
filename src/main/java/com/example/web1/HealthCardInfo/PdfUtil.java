@@ -14,9 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * 图片转pdf工具类
  */
-public class Img2PdfUtil {
+public class PdfUtil {
 
-    private static Logger logger = Logger.getLogger(Img2PdfUtil.class);
+    private static Logger logger = Logger.getLogger(PdfUtil.class);
     public static File MultipartFileToFile(MultipartFile multiFile) {
         // 获取文件名
         String fileName = multiFile.getOriginalFilename();

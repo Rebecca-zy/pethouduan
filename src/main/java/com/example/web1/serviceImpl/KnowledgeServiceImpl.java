@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class KnoeledgeServiceImpl implements KnowledgeService {
+public class KnowledgeServiceImpl implements KnowledgeService {
 
     @Autowired
     KnowledgeMapper knowledgeMapper;
