@@ -108,7 +108,4 @@ public class ShareController {
     public List<messageinfo> userfollstarShareByYhid(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "fqh") int fqh,@RequestParam(value = "follorstar") int follorstar){
         return shareService. userfollstarShareByyhid(yhid, fqh, follorstar);
     }
-
-    
-
 }
