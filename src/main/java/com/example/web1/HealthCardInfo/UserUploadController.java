@@ -13,11 +13,11 @@ import static com.example.web1.HealthCardInfo.PdfUtil.MultipartFileToFile;
 
 @CrossOrigin(origins = "*")
 @RestController
-public class UploadController {
+public class UserUploadController {
     @Resource
     HttpServletRequest request;
     //处理文件上传
-    @RequestMapping(value="/uploadimg", method = RequestMethod.POST)
+    @RequestMapping(value="/useruploadimg", method = RequestMethod.POST)
     public @ResponseBody String[] uploadImg(@RequestParam("file") MultipartFile[] file) throws Exception {
         String url[] = new String[file.length];
         int len=0;
@@ -38,9 +38,9 @@ public class UploadController {
         for (int i=0;i<len;i++){
             imageFiles[i]=MultipartFileToFile(file[i]);
         }
-//        生成pdf文件的路径
-        String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
-        PdfUtil.imagesToPdf(outPdfPath, imageFiles);
+// //        生成pdf文件的路径
+//         String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
+//         PdfUtil.imagesToPdf(outPdfPath, imageFiles);
 
         return url;
     }
