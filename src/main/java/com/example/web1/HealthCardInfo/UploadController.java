@@ -39,15 +39,9 @@ public class UploadController {
             imageFiles[i]=MultipartFileToFile(file[i]);
         }
 //        生成pdf文件的路径
-        String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
-        PdfUtil.imagesToPdf(outPdfPath, imageFiles);
+        // String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
+        // PdfUtil.imagesToPdf(outPdfPath, imageFiles);
 
         return url;
-
     }
-
-
-
-
-
 }

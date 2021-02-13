@@ -7,7 +7,7 @@ public class Share {
     private String yhm;
     private String fbsj;
     private String wz;
-    private String fqh;
+    private int fqh;
     private int sc;
 
     public int getJlid() {
@@ -58,11 +58,11 @@ public class Share {
         this.wz = wz;
     }
 
-    public String getFqh() {
+    public int getFqh() {
         return fqh;
     }
 
-    public void setFqh(String fqh) {
+    public void setFqh(int fqh) {
         this.fqh = fqh;
     }
 

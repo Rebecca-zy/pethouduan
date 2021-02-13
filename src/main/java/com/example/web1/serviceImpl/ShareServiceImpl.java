@@ -18,6 +18,7 @@ import com.example.web1.service.UserInfoService;
 import org.apache.commons.lang.ObjectUtils.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.testng.thread.ITestNGThreadPoolExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +39,28 @@ public class ShareServiceImpl implements ShareService {
     UserMapper userMapper; 
 
     @Override
-    public Integer addShare(Integer yhid,Integer cwid,String yhm,String fbsj,String wz,Integer fqh){
-        return shareMapper.addShare(yhid,cwid, yhm, fbsj, wz, fqh);
+    public Integer addShare(int yhid,String yhm,String userurl,String fbsj,String wz,String[] photourl,
+    String[] vdurl, int isphoto, int fqh, int cwid) {
+        Share share =new Share();
+        share.setCwid(cwid);
+        share.setYhm(yhm);
+        share.setFqh(fqh);
+        share.setFbsj(fbsj);
+        share.setYhid(yhid);
+        share.setWz(wz);
+        
+        System.out.println(shareMapper.addShare(share));
+        System.out.println(share.getJlid());
+        if(isphoto==1){
+            for(int i=0;i<photourl.length;i++)
+                photoMapper.addSharephoto(photourl[i],yhid, share.getJlid());
+        }else if(isphoto==0){
+            videoMapper.addSharevideo(vdurl[0],yhid, share.getJlid());
+        }else{
+            
+        }
+        return 1;
+     
     }
 
     @Override

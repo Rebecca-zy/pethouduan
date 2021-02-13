@@ -2,12 +2,16 @@ package com.example.web1.mapper;
 
 import com.example.web1.pojo.Video;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface VideoMapper {
+    @Insert("INSERT INTO video (sp,yhid,jlid,sc) VALUES ( #{sp}, #{yhid}, #{jlid}, 0) ")
+    Integer addSharevideo(@Param("sp") String sp,@Param("yhid") int yhid,@Param("jlid") int jlid);
+
     @Select("SELECT * FROM video WHERE jlid=#{jlid}")
     Video getVideoByjlid(@Param("jlid") int jlid);
 

@@ -14,6 +14,8 @@ public class messageinfo {
     private String[] photourl;
     private String vdurl;
     private String isphoto;
+    private int cwid;
+    private int fqh;
 
     public int getMessagenum() {
         return messagenum;
@@ -117,5 +119,21 @@ public class messageinfo {
 
     public void setUserurl(String userurl) {
         this.userurl = userurl;
+    }
+
+    public int getCwid() {
+        return cwid;
+    }
+
+    public void setCwid(int cwid) {
+        this.cwid = cwid;
+    }
+
+    public int getFqh() {
+        return fqh;
+    }
+
+    public void setFqh(int fqh) {
+        this.fqh = fqh;
     }
 }

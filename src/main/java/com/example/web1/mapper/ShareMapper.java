@@ -5,6 +5,7 @@ import com.example.web1.pojo.User;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,8 +13,9 @@ import java.util.List;
 
 @Mapper
 public interface ShareMapper {
-    @Insert("INSERT INTO share (yhid, cwid,yhm,fbsj,wz,fqh) VALUES ( #{yhid}, #{cwid}, #{yhm}, #{fbsj}, #{wz}, #{fqh}) ")
-    Integer addShare(@Param("yhid") Integer yhid,@Param("cwid") Integer cwid,@Param("yhm") String yhm,@Param("fbsj") String fbsj,@Param("wz") String wz,@Param("fqh") Integer fqh);
+    @Insert("INSERT INTO share (yhid, cwid,yhm,fbsj,wz,fqh,sc) VALUES ( #{share.yhid}, #{share.cwid}, #{share.yhm}, #{share.fbsj}, #{share.wz}, #{share.fqh},0) ")
+    @Options(useGeneratedKeys = true, keyProperty = "jlid", keyColumn = "jlid")//得到插入的主键值
+    Integer addShare(@Param("share") Share share);
 
     @Select("SELECT count(*) FROM share WHERE yhid=#{yhid}")
     Integer getShareYhId(@Param("yhid") Integer yhid);
@@ -28,11 +30,13 @@ public interface ShareMapper {
     List<Share> getShareInfoBySimilarName(@Param("wz") String wz);
 
     // 按收藏降序排
-    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid)  FROM  `share` JOIN star ON `share`.jlid=star.jlid GROUP BY `share`.jlid
+    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid) FROM `share` JOIN star ON
+    // `share`.jlid=star.jlid GROUP BY `share`.jlid
     // ORDER BY COUNT(star.yhid)desc
     // 按收藏加喜欢降序
-    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid)+COUNT(likelist.yhid)  
-    // FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid 
+    // SELECT `share`.jlid,`share`.wz, COUNT(star.yhid)+COUNT(likelist.yhid)
+    // FROM `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON
+    // `share`.jlid=likelist.jlid
     // GROUP BY `share`.jlid
     // ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc
     @Select("SELECT `share`.jlid  FROM  `share` JOIN star ON `share`.jlid=star.jlid JOIN likelist ON `share`.jlid=likelist.jlid WHERE EXISTS((SELECT DISTINCT photo.jlid FROM photo) UNION (SELECT DISTINCT video.jlid FROM video)) GROUP BY `share`.jlid ORDER BY COUNT(star.yhid)+COUNT(likelist.yhid) desc")
@@ -44,9 +48,9 @@ public interface ShareMapper {
 
     // 返回用户的历史分享的记录分宠物
     @Select("SELECT `share`.jlid  FROM  `share` WHERE `share`.yhid=#{yhid} AND `share`.cwid=#{cwid} ORDER BY `share`.fbsj DESC")
-    int[] getShareidBycwidyhid(@Param("yhid") int yhid,@Param("cwid") int cwid);
+    int[] getShareidBycwidyhid(@Param("yhid") int yhid, @Param("cwid") int cwid);
 
-     // 返回关注用户的动态
+    // 返回关注用户的动态
     @Select("select `share`.jlid FROM `share` where `share`.yhid in (SELECT follow.zyhid  FROM follow where follow.fsid=#{yhid}) AND `share`.sc=0 ORDER BY `share`.fbsj DESC")
-     Integer[] getfollowShareByyhid(@Param("yhid") int yhid);
+    Integer[] getfollowShareByyhid(@Param("yhid") int yhid);
 }
