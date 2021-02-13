@@ -85,7 +85,8 @@ public class FileUtils {
             Boolean writeFlag = uploadFile(file.getBytes(), filePath, fileName);
             if (writeFlag) {
                 //保存到数据库的url
-                fullPath = "http://192.168.0.101:8080" + "/"+urlName+"/" + date + "/" + fileName;
+                // fullPath = "http://192.168.0.101:8080" + "/"+urlName+"/" + date + "/" + fileName;
+                fullPath = "http://192.168.1.6:8080" + "/"+urlName+"/" + date + "/" + fileName;
                 //保存到数据库
             }
         }catch (Exception e){

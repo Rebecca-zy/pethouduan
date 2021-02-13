@@ -26,9 +26,30 @@ public class ShareController {
     @Autowired
     LikeService likeService;
 
+    // userid:0,
+    //     username:"",
+    //     userurl:"",
+    //     datatime:"",
+    //     passage:"",
+    //     photourl:[],
+    //     vdurl:"",
+    //     isphoto:9,
+    //     fqh:1,
+    //     cwid:0,
+
     @PostMapping("/addshare")
-    public Integer addshare(@RequestParam(value = "yhid") int yhid,@RequestParam(value = "cwid") int cwid,@RequestParam(value = "yhm") String yhm,@RequestParam(value = "wz") String wz,@RequestParam(value = "fbsj") String fbsj,@RequestParam(value = "fqh") int fqh){    
-        return shareService.addShare(yhid,cwid, yhm, fbsj, wz, fqh);
+    public Integer addshare(
+    @RequestParam(value = "userid") int userid,
+    @RequestParam(value = "userurl") String userurl,
+    @RequestParam(value = "username") String username,
+    @RequestParam(value = "datatime") String datatime,
+    @RequestParam(value = "passage") String passage,
+    @RequestParam(value = "photourl") String[] photourl,
+    @RequestParam(value = "vdurl")  String[] vdurl,
+    @RequestParam(value = "isphoto") int isphoto,
+    @RequestParam(value = "fqh") int fqh,
+    @RequestParam(value = "cwid") int cwid){    
+        return shareService.addShare(userid,username,userurl,datatime,passage,photourl,vdurl,isphoto,fqh,cwid);
     }
     //查数据库
     @PostMapping("/share")

@@ -5,12 +5,22 @@ import java.util.List;
 import com.example.web1.pojo.Photo;
 import com.example.web1.pojo.userPhotolist;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface PhotoMapper {
+
+    // private int zpid;
+    // private String zp;
+    // private int yhid;
+    // private int jlid;
+    // private int sc;
+    @Insert("INSERT INTO photo (zp,yhid,jlid,sc) VALUES ( #{zp}, #{yhid}, #{jlid}, 0) ")
+    Integer addSharephoto(@Param("zp") String sp,@Param("yhid") int yhid,@Param("jlid") int jlid);
+
     @Select("SELECT * FROM photo WHERE jlid=#{jlid}")
     List<Photo> getPhotoByjlid(@Param("jlid") int jlid);
 

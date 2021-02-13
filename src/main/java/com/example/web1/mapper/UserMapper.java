@@ -8,6 +8,7 @@ import java.util.List;
 //mapper层就是dao层，对数据进行增删改查处理
 @Mapper
 public interface UserMapper {
+    
     @Select("SELECT * FROM user WHERE yhid=#{yhid}")
     User getUserInfoById(@Param("yhid") Integer yhid);
 
