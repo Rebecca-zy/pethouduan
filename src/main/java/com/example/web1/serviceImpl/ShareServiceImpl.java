@@ -48,8 +48,7 @@ public class ShareServiceImpl implements ShareService {
         share.setFbsj(fbsj);
         share.setYhid(yhid);
         share.setWz(wz);
-        
-        System.out.println(shareMapper.addShare(share));
+        shareMapper.addShare(share);
         System.out.println(share.getJlid());
         if(isphoto==1){
             for(int i=0;i<photourl.length;i++)
@@ -60,7 +59,6 @@ public class ShareServiceImpl implements ShareService {
             
         }
         return 1;
-     
     }
 
     @Override
