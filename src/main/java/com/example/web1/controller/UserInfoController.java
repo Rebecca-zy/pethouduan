@@ -110,7 +110,21 @@ public class UserInfoController {
         return result;
     }
 
-
+    //修改更新用户名、个性签名以及邮箱信息
+    @PostMapping("/renew")
+    public String renew(@RequestBody Map user) {
+        try{
+        Integer yhid=Integer.parseInt(String.valueOf(user.get("yhid")));
+        String yhm=String.valueOf(user.get("yhm"));
+        String yx=String.valueOf(user.get("yx"));
+        String gxqm=String.valueOf(user.get("gxqm"));
+        return userService.renewUser(yhid,yhm,yx,gxqm);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return "fail";
+        }
+    }
 
     //注册
     @PassToken
