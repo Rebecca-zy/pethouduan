@@ -56,6 +56,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         return a;
     }
 
+    @Override
+    public String renewUser(Integer yhid,String yhm,String yx,String gxqm){
+        userMapper.renewUser(yhid, yhm, yx,gxqm);
+        return "success";
+    }
+
+
 }
 
 

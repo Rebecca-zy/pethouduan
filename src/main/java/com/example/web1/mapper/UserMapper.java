@@ -24,6 +24,9 @@ public interface UserMapper {
     @Insert("INSERT INTO user ( yhm, mm, yx )   VALUES ( #{yhm}, #{mm}, #{yx}) ")
     @Options(useGeneratedKeys = true, keyProperty = "yhid")
     int addUser( User User);
+
+    @Update("update user,share set user.yhm=#{yhm},yx=#{yx},share.yhm=#{yhm},gxqm=#{gxqm} where user.yhid=#{yhid} and `share`.yhid=#{yhid}")
+    void renewUser(@Param("yhid")Integer yhid,@Param("yhm")String yhm,@Param("yx")String yx,@Param("gxqm")String gxqm);
 }
 
 
