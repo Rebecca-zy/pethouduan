@@ -10,4 +10,7 @@ public interface PetService {
 
     List<petinfo> getPetInfoByYhid(Integer yhid);
 
+    void renewPet(Integer cwid,String xm,String xb,String pz,String csrq);
+
+    void addPet(String zl,Integer yhid, String xm, String xb, String pz, String csrq);
 }
