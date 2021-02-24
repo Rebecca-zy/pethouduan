@@ -1,6 +1,9 @@
 package com.example.web1.service;
 
 import com.example.web1.pojo.Follow;
+import com.example.web1.pojo.User;
+import com.itextpdf.text.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface FollowService {
