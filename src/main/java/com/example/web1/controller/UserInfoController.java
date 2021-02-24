@@ -204,5 +204,13 @@ public class UserInfoController {
         return userService.gz_fs_fx(yhid);
     }
 
+    @PostMapping("/resetTx")
+    public String resetTx(@RequestBody Map user ){
+        Integer yhid=Integer.parseInt(String.valueOf(user.get("yhid")));
+        String tx=String.valueOf(user.get("tx"));
+        userService.resetTx(yhid,tx);
+        return "success";
+    }
+
 }
 

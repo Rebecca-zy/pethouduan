@@ -25,7 +25,6 @@ public class UserUploadController {
             String fileName = multipartFile.getOriginalFilename();
             //设置文件上传路径
             String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-            //request.getSession().getServletContext()是获取的servlet容器对象。getRealPath("/") 获取实际路径，项目发布时，在容器中的实际路径。
             try {
                  Boolean res= FileUtils.uploadFile(multipartFile.getBytes(), filePath, fileName);
                  url[len]=FileUtils.uploadImg(multipartFile,fileName);
@@ -38,10 +37,14 @@ public class UserUploadController {
         for (int i=0;i<len;i++){
             imageFiles[i]=MultipartFileToFile(file[i]);
         }
+
 // //        生成pdf文件的路径
 //         String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
 //         PdfUtil.imagesToPdf(outPdfPath, imageFiles);
 
         return url;
     }
+
+
+
 }

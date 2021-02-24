@@ -11,4 +11,5 @@ public interface UserInfoService {
     int addUser(User User);
     int[] gz_fs_fx( Integer yhid );
     String renewUser(Integer yhid,String yhm,String yx,String gxqm);
+    void resetTx(Integer yhid,String tx);
 }
