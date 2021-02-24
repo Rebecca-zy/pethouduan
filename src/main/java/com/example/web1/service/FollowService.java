@@ -2,7 +2,9 @@ package com.example.web1.service;
 
 import com.example.web1.pojo.Follow;
 import com.example.web1.pojo.User;
-import com.itextpdf.text.List;
+
+import java.util.List;
+
 
 import org.apache.ibatis.annotations.Param;
 
@@ -13,4 +15,6 @@ public interface FollowService {
     Follow getIsFollow(Integer zyhid,Integer fsid);
     Integer addFollow( Integer zyhid,Integer fsid,Integer qxgz);
     Integer updateFollow(Integer zyhid,Integer fsid,Integer qxgz);
+    List<User> getUserFs(Integer zyhid);
+    List<User> getUserGz(Integer zyhid);
 }

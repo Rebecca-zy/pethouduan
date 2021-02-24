@@ -1,7 +1,12 @@
 package com.example.web1.controller;
 
 
+import java.util.List;
+
+import com.example.web1.pojo.User;
 import com.example.web1.service.FollowService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +20,14 @@ public class FollowController {
         // System.out.println(zyhid);
         Integer sharetemp=Integer.parseInt(zyhid);
         return followService.getFollowZyhId(sharetemp);
+    }
+    @PostMapping("/getuserfs")
+    public List<User> getuserfs(@RequestParam(value = "zyhid") Integer zyhid) {
+        return followService.getUserFs(zyhid);
+    }
+    @PostMapping("/getusergz")
+    public List<User> getusergz(@RequestParam(value = "zyhid") Integer zyhid) {
+        return followService.getUserGz(zyhid);
     }
     @PostMapping("/fsfollow")
     public Integer fsfollow(@RequestParam(value = "fsid") String fsid) {

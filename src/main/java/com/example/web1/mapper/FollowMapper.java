@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface FollowMapper {
     @Select("SELECT fsid FROM follow WHERE zyhid=#{zyhid} and qxgz=0")
-    Integer getuserFsZyhId(@Param("zyhid") Integer zyhid);
+    Integer[] getuserFsZyhId(@Param("zyhid") Integer zyhid);
 
-    @Select("SELECT zyhid FROM follow WHERE fsid=#{zyhid} and qxgz=0")
-    Integer getuserFollowZyhId(@Param("zyhid") Integer zyhid);
+    @Select("SELECT zyhid FROM follow WHERE fsid=#{fsid} and qxgz=0")
+    Integer[] getuserFollowZyhId(@Param("fsid") Integer fsid);
 
     @Select("SELECT count(*) FROM follow WHERE zyhid=#{zyhid} and qxgz=0")
     Integer getFollowZyhId(@Param("zyhid") Integer zyhid);
