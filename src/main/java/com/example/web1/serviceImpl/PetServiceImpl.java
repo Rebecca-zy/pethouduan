@@ -49,4 +49,13 @@ public class PetServiceImpl implements PetService{
         }
         return temp;
     }
+    @Override
+    public void renewPet(Integer cwid, String xm, String xb, String pz, String csrq){
+        petMapper.renewPet(cwid, xm, xb, pz, csrq);
+    }
+
+    @Override
+    public void addPet(String zl,Integer yhid, String xm, String xb, String pz, String csrq){
+        petMapper.addPet(zl,yhid, xm, xb, pz, csrq);
+    }
 }
