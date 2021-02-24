@@ -5,10 +5,7 @@ import java.util.List;
 import com.example.web1.pojo.Photo;
 import com.example.web1.pojo.userPhotolist;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface PhotoMapper {
@@ -44,4 +41,7 @@ public interface PhotoMapper {
 
     @Select("select photo.zp FROM photo JOIN `share` on photo.jlid=`share`.jlid  WHERE `share`.sc=0 AND `share`.yhid=#{yhid} AND `share`.fbsj=#{fbsj}")
     String[] getUserPhotolistByYhid(@Param("yhid") Integer yhid,@Param("fbsj") String fbsj);
+
+    @Update("update user set tx=#{tx} where yhid=#{yhid}")
+    void resetTx(@Param("yhid")Integer yhid,@Param("tx")String tx);
 }

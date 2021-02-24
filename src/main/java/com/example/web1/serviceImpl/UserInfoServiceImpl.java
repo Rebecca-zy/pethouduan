@@ -1,5 +1,6 @@
 package com.example.web1.serviceImpl;
 
+import com.example.web1.mapper.PhotoMapper;
 import com.example.web1.pojo.User;
 import com.example.web1.mapper.FollowMapper;
 import com.example.web1.mapper.ShareMapper;
@@ -20,6 +21,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     FollowMapper followMapper;
     @Autowired
     ShareMapper shareMapper;
+    @Autowired
+    PhotoMapper photoMapper;
 
     @Override
     public User getUserInfoById(Integer yhid) {
@@ -60,6 +63,10 @@ public class UserInfoServiceImpl implements UserInfoService {
     public String renewUser(Integer yhid,String yhm,String yx,String gxqm){
         userMapper.renewUser(yhid, yhm, yx,gxqm);
         return "success";
+    }
+    @Override
+    public void resetTx(Integer yhid,String tx){
+        photoMapper.resetTx(yhid,tx);
     }
 
 
