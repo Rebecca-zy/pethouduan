@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import java.io.File;
+import java.util.UUID;
 
 import static com.example.web1.HealthCardInfo.PdfUtil.MultipartFileToFile;
 
@@ -18,7 +19,7 @@ public class UploadController {
     HttpServletRequest request;
     //处理文件上传
     @RequestMapping(value="/uploadimg", method = RequestMethod.POST)
-    public @ResponseBody String[] uploadImg(@RequestParam("file") MultipartFile[] file) throws Exception {
+    public @ResponseBody String uploadImg(@RequestParam("file") MultipartFile[] file) throws Exception {
         String url[] = new String[file.length];
         int len=0;
         for (MultipartFile multipartFile:file){
@@ -39,9 +40,17 @@ public class UploadController {
             imageFiles[i]=MultipartFileToFile(file[i]);
         }
 //        生成pdf文件的路径
-        String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
-        PdfUtil.imagesToPdf(outPdfPath, imageFiles);
+//        String outPdfPath = "/Users/zhangyun/Desktop/PdfTest.pdf";
+//        String outPdfPath = "C:/PdfTest.pdf";
 
-        return url;
+
+
+        String outPdfPath = "C:/PdfTest.pdf";
+
+        System.out.println("http://121.5.79.150:8080/"+PdfUtil.imagesToPdf(outPdfPath, imageFiles));
+        return PdfUtil.imagesToPdf(outPdfPath, imageFiles);
+
+
+//        return url;
     }
 }

@@ -75,7 +75,8 @@ public class FileUtils {
         String date = df1.format(new Date());
         String filePath = "";
         //保存到数据库的url的路径
-        filePath = "/Library/PetPhoto/"+urlName+"/" + date + "/";
+//        filePath = "/Library/PetPhoto/"+urlName+"/" + date + "/";
+        filePath = "C:/"+urlName+"/" + date + "/";
         //filePath = "C:/"+urlName+"/" + date + "/";
         String uuid = UUID.randomUUID().toString();
         String fileName = uuid + "." + suffix;
@@ -86,7 +87,35 @@ public class FileUtils {
             if (writeFlag) {
                 //保存到数据库的url
                 // fullPath = "http://192.168.0.101:8080" + "/"+urlName+"/" + date + "/" + fileName;
-                fullPath = "http://192.168.1.6:8080" + "/"+urlName+"/" + date + "/" + fileName;
+                fullPath = "http://121.5.79.150:8080" + "/"+urlName+"/" + date + "/" + fileName;
+                //保存到数据库
+            }
+        }catch (Exception e){
+            return "error";
+        }
+        return fullPath;
+    }
+
+    public static String uploadPdf(MultipartFile file, String urlName){
+        String originalName = file.getOriginalFilename();
+        String suffix = originalName.substring(originalName.lastIndexOf(".") + 1);
+        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+        String date = df1.format(new Date());
+        String filePath = "";
+        //保存到数据库的url的路径
+//        filePath = "/Library/PetPhoto/"+urlName+"/" + date + "/";
+        filePath = "C:/"+urlName+"/" + date + "/";
+        //filePath = "C:/"+urlName+"/" + date + "/";
+        String uuid = UUID.randomUUID().toString();
+        String fileName = uuid + "." + suffix;
+        String fullPath = "";
+        try {
+            //执行保存操作
+            Boolean writeFlag = uploadFile(file.getBytes(), filePath, fileName);
+            if (writeFlag) {
+                //保存到数据库的url
+                // fullPath = "http://192.168.0.101:8080" + "/"+urlName+"/" + date + "/" + fileName;
+                fullPath = "http://121.5.79.150:8080" + "/"+urlName+"/" + date + "/" + fileName;
                 //保存到数据库
             }
         }catch (Exception e){

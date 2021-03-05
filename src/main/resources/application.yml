@@ -8,8 +8,10 @@
         #数据库连接
         datasource:
             username: root
-            password: root
-            url: jdbc:mysql://47.96.153.145:3306/pet?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+            password: 20000209
+#            password: root
+            url: jdbc:mysql://localhost:3306/pet?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+#            url: jdbc:mysql://47.96.153.145:3306/pet?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
             driver-class-name: com.mysql.cj.jdbc.Driver
             initialSize: 5
             minIdle: 5
@@ -29,7 +31,7 @@
     server:
         port: 8000
     #单位 分钟
-    EXPIRE_TIME: 20
+    EXPIRE_TIME: 200
     #设置接收图片大小
 
 
